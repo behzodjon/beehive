@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- mobile view -->
         <TransitionRoot as="template" :show="sidebarOpen">
             <Dialog as="div" class="fixed inset-0 flex z-40 md:hidden" @close="sidebarOpen = false">
                 <TransitionChild as="template" enter="transition-opacity ease-linear duration-300"
@@ -40,12 +41,20 @@
         <!-- Static sidebar for desktop -->
         <div class="hidden md:flex md:w-[22%] md:flex-col md:fixed md:inset-y-0">
             <!-- Sidebar component, swap this element with another sidebar if you like -->
-            <div class="flex-1 flex flex-col min-h-0 bg-linear bg-dark-100 pb-4 pt-10  px-4">
-                <div class="flex items-center flex-shrink-0 justify-center ">
-                    <img class="max-h-[105px]  max-w-[80%]" src="../assets/images/logo.svg" alt="Beehive" />
+            <div class="flex-1 flex flex-col min-h-0   items-center w-full">
+                <!-- panel dark -->
+                <div class="w-full bg-linear bg-dark-100 pb-4 pt-10 px-4">
+                    <div class="flex items-center flex-shrink-0 justify-center w-full">
+                        <img class="max-h-[105px]  max-w-[80%]" src="../assets/images/logo.svg" alt="Beehive" />
+                    </div>
+                    <!-- user card -->
+                    <UserCard />
                 </div>
-                <!-- user card -->
-                <UserCard />
+
+                <!-- panel light -->
+                <div class="border-r border-solid border-[#e7edf2] pb-4 pt-10 px-4 ">
+                    <PanelMenu/>
+                </div>
             </div>
         </div>
 
@@ -148,6 +157,7 @@ import {
 } from '@heroicons/vue/outline'
 import { SearchIcon } from '@heroicons/vue/solid'
 import UserCard from '../components/UserCard.vue'
+import PanelMenu from '../components/PanelMenu.vue'
 
 
 

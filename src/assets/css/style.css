@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
 
+body {
+    font-family: Arial,sans-serif;
+    color: #626c72;
+    font-size: 14px;
+    line-height: 26px;
+}
 
 .nunito {
     font-family: 'Nunito Sans', sans-serif;
