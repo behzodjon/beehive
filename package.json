@@ -10,7 +10,9 @@
   "dependencies": {
     "@headlessui/vue": "^1.6.0",
     "@heroicons/vue": "^1.0.6",
-    "vue": "^3.2.25"
+    "vite-svg-loader": "^3.3.0",
+    "vue": "^3.2.25",
+    "vue3-perfect-scrollbar": "^1.6.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",
