@@ -12,6 +12,7 @@
     "@heroicons/vue": "^1.0.6",
     "vite-svg-loader": "^3.3.0",
     "vue": "^3.2.25",
+    "vue-router": "^4.0.14",
     "vue3-perfect-scrollbar": "^1.6.0"
   },
   "devDependencies": {

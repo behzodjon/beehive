@@ -1,7 +1,7 @@
 <template>
     <div class="max-w-[250px]  bg-white px-8 py-6 rounded-[12px] mt-4 w-full mx-auto mb-[-65px] relative my-card">
         <div>
-            <router-link href="#" class="relative flex justify-center profile-avatar">
+            <router-link to="#" class="relative flex justify-center profile-avatar">
                 <img class="w-[50px] rounded-[50%] h-auto" src="../assets/images/john-doe.jpg" alt="avatar">
             </router-link>
             <div class="flex flex-col mt-3">
@@ -48,7 +48,8 @@
     z-index: -1;
     box-shadow: 0 15px 100px rgb(58 46 68 / 6%);
 }
-.my-card{
+
+.my-card {
     box-shadow: 0 15px 100px rgb(58 46 68 / 6%);
 }
 </style>

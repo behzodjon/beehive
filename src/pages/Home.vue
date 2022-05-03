@@ -42,7 +42,7 @@
         <div class="hidden md:flex md:w-[22%] md:flex-col md:fixed md:inset-y-0 relative">
             <!-- Sidebar component, swap this element with another sidebar if you like -->
             <div class="flex flex-col items-center flex-1 w-full min-h-0 sidebar">
-                <perfect-scrollbar class="w-full">
+                <perfect-scrollbar class="w-full pb-20">
 
                 <!-- panel dark -->
                 <div class="w-full px-4 pt-10 pb-4 bg-linear bg-dark-100">

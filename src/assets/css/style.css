@@ -25,32 +25,13 @@ body {
     background-image: linear-gradient(135deg, #4f5261 0%, #383a45 50%);
 }
 
-.sidebar::-webkit-scrollbar {
-    width: 4px;
-    position: absolute;
-    min-height: 50px;
-    display: block;
-    height: 143px;
-    max-height: 337px;
-    top: 141px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-    background-color: rgba(0,0,0,.2);
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,.2);
-    border-radius: 10px;
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-
-    background: #555;
-}
-.ps__thumb-y{
+.ps__thumb-y {
     min-height: 50px !important;
-    display: block;
     height: 143px !important;
     max-height: 337px !important;
+    width: 4px !important;
+}
+
+.ps__rail-y {
+    width: 4px !important;
 }
