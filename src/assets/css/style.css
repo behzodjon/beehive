@@ -1,7 +1,7 @@
 /* Fonts */
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
 
 @font-face {
     font-family: 'Arial';
@@ -19,6 +19,10 @@ body {
 
 .nunito {
     font-family: 'Nunito Sans', sans-serif;
+}
+
+.quicksand {
+    font-family: 'Quicksand', sans-serif;
 }
 
 .bg-linear {
