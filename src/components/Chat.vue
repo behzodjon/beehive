@@ -28,10 +28,29 @@
                                 </button></Tab>
                         </TabList>
                         <TabPanels>
-                            <TabPanel>Content 1</TabPanel>
+                            <TabPanel>
+                                <div>
+                                    <div class=" max-h-[42px] relative mt-4">
+                                        <div class="absolute -translate-y-1/2 left-4 top-1/2">
+                                            <search class="w-3 h-6 text-gray-200" />
+                                        </div>
+                                        <input type="text" placeholder="Find friends"
+                                            class="w-full  pr-4 bg-white border border-gray-100 border-solid pl-9 py-[0.375rem] rounded-[1.25rem] h-10 text-[90%] text-gray-200 placeholder:text-gray-200">
+                                    </div>
+                                    <div class="mt-6">
+                                        <span>No friend found</span>
+                                    </div>
+                                </div>
+                            </TabPanel>
                             <TabPanel>Content 2</TabPanel>
                         </TabPanels>
                     </TabGroup>
+                </div>
+                <div
+                    class="absolute inset-x-0 bottom-0 flex items-center h-20 bg-white border-t border-gray-100 border-solid">
+                    <div class="bg-pink-500 collapse-icon">
+                        <AngleRight/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -41,10 +60,16 @@
 <script setup>
 import comments from '../assets/images/icons/comments.svg'
 import ellipsis from '../assets/images/icons/ellipsis.svg'
+import search from '../assets/images/icons/search.svg'
+import AngleRight from '../assets/images/icons/angle-right.svg'
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 
 
 </script>
 
-<style lang="scss" scoped>
+<style  scoped>
+.collapse-icon {
+    background-image: linear-gradient(135deg, #a968ec 0%, #8224e3 55%, #c395f1 110%);
+    background-size: 200% auto;
+}
 </style>
