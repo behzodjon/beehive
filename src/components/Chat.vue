@@ -1,5 +1,5 @@
 <template>
-    <div  class="chat-windows">
+    <div class="chat-windows">
         <ul class="flex justify-end h-8 p-0 m-0">
             <li class="z-50 w-[280px] relative ml-[1.375rem]">
                 <div
@@ -27,7 +27,6 @@
                     <div>
                         <div class="flex border-t border-solid border-[#e7edf2]">
                             <div class="relative">
-                                
                             </div>
                         </div>
                     </div>

@@ -79,10 +79,6 @@
                     </div>
                     <div v-if="!collapsed" class="text-[1em] text-[#4f515b] font-bold quicksand">
                         Collapse
-
-
-
-
                     </div>
                 </div>
             </div>
