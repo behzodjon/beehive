@@ -149,7 +149,7 @@
                 </div>
             </main>
         </div>
-        <Chat/>
+        <MessageBox/>
     </div>
 </template>
 
@@ -172,7 +172,7 @@ import UserPlus from '../assets/images/icons/user-plus.svg'
 import bell from '../assets/images/icons/bell.svg'
 import EnvelopeOpen from '../assets/images/icons/envelope-open.svg'
 import ShoppingBag from '../assets/images/icons/shopping-bag.svg'
-import Chat from '../components/Chat.vue'
+import MessageBox from '../components/MessageBox.vue'
 
 
 
