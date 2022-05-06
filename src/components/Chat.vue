@@ -3,7 +3,7 @@
         <ul class="flex justify-end h-8 p-0 m-0">
             <li class="z-50 w-[280px] relative ml-[1.375rem]">
                 <div
-                    class="w-full bg-white h-[312px] border border-solid border-[#e7edf2] absolute bottom-0 flex flex-col px-1 pt-1 rounded-tl-[12px] rounded-tr-[12px]">
+                    class="w-full bg-white h-[312px] justify-between border border-solid border-[#e7edf2] absolute bottom-0 flex flex-col px-1 pt-1 rounded-tl-[12px] rounded-tr-[12px]">
                     <div
                         class="relative flex items-center pb-1 border-b border-solid cursor-pointer border-[#e7edf2] space-x-2">
                         <div class="relative ">
@@ -15,20 +15,45 @@
                             <a class="font-semibold text-[#29292d]">Photography</a>
                             <small class="text-[80%] leading-[1] text-[#bbbbdc]"> Offline</small>
                         </ul>
-                        <div class="absolute right-0 text-red-600 top-1">
+                        <div @click="$emit('closeChat')" class="absolute right-0 text-red-600 cursor-pointer top-1">
                             <close class="w-4 h-4" />
                         </div>
                     </div>
                     <div class="relative flex flex-col overflow-hidden">
-                        <div class="block h-full">
-                            <div class="flex flex-col p-0 m-0"></div>
+                        <div class="block h-full max-h-full chat-area">
+                            <div  ref="messagesArea" class="flex flex-col p-0 m-0 chat-list__scroll ">
+                                <ul class="flex flex-col p-0 m-0 grow">
+                                    <li class="w-full mb-3">
+                                        <div class="flex items-start">
+                                            <div 
+                                                class="flex flex-col flex-wrap items-end w-full text-right" >
+                                                <div v-for="(message, index) in messages"
+                                                    class="border-[0.5px] border-solid border-white px-4 py-2 mb-4 border-tl-[12px] border-bl-[12px] message-text">
+                                                    {{ message }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div>
-                        <div class="flex border-t border-solid border-[#e7edf2]">
-                            <div class="relative">
+                        <form @submit.prevent="sendMessage">
+                            <div class="flex border-t border-solid border-t-[#e7edf2]">
+                                <div class="relative grow">
+                                    <input ref="input" autofocus v-model="message" type="text"
+                                        class="min-h-[26px] inline-block py-2 leading-[1.25] w-full outline-none text-[90%]"
+                                        placeholder="Write your message" required>
+                                </div>
+                                <div @click="showEmoji = !showEmoji" class="inline-flex items-center cursor-pointer">
+                                    <span class="text-xl">&#128515;</span>
+                                </div>
                             </div>
-                        </div>
+                            <div class="absolute bottom-9" v-if="showEmoji">
+                                <Picker :data="emojiIndexData" set="twitter" @select="showEmojiElement" />
+                            </div>
+                        </form>
                     </div>
                 </div>
             </li>
@@ -38,7 +63,7 @@
 
 <script setup>
 import close from '../assets/images/icons/close.svg'
-import { ref } from "vue";
+import { ref, nextTick, reactive } from "vue";
 import data from "emoji-mart-vue-fast/data/all.json";
 import { Picker, EmojiIndex } from "emoji-mart-vue-fast/src";
 import "emoji-mart-vue-fast/css/emoji-mart.css";
@@ -47,12 +72,38 @@ let emojiIndex = new EmojiIndex(data);
 
 const emojiIndexData = ref(emojiIndex)
 const emojisOutput = ref('')
+const input = ref(null)
+const messagesArea = ref(null)
 
-const show = ref(false)
+const showEmoji = ref(false)
+
+const messages = ref([])
+
+const message = ref('')
 
 
-function showEmoji(emoji) {
-    console.log(emoji)
+
+function sendMessage() {
+    messages.value.push(message.value)
+     let messageDisplay = messagesArea.value
+    messageDisplay.scrollTop = messageDisplay.scrollHeight
+    console.log(messageDisplay)
+    message.value = ''
+    emojisOutput.value = ''
+}
+
+async function showEmojiElement(emoji) {
+    emojisOutput.value = emojisOutput.value + emoji.native;
+    const textarea = input.value
+    const cursorPosition = textarea.selectionEnd
+    const start = message.value.substring(0, textarea.selectionStart)
+    const end = message.value.substring(textarea.selectionStart)
+    message.value = start + emojisOutput.value + end
+    textarea.focus()
+    await nextTick()
+    textarea.selectionEnd = cursorPosition + emoji.native.length
+   
+    emojisOutput.value = ''
 }
 </script>
 
@@ -72,6 +123,11 @@ function showEmoji(emoji) {
     height: 100%;
     width: calc(100% + 15px);
     max-height: calc(100vh - 190px);
+}
+
+.chat-area {
+    overflow: hidden scroll;
+    width: calc(100% + 15px);
 }
 
 .chat-list__scroll:hover {
@@ -96,5 +152,9 @@ function showEmoji(emoji) {
 
 .chat-windows {
     width: calc(100vw - 112px);
+}
+
+.message-text {
+    background-color: rgba(130, 36, 227, 0.05);
 }
 </style>
