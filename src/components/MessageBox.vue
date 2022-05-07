@@ -36,7 +36,6 @@
                         <img class="rounded-full w-[30px] h-auto"
                             src="https://mythemestore.com/beehive-preview/wp-content/uploads/group-avatars/6/5e2cce5312454-bpthumb.jpg"
                             alt="group avatar">
-
                     </div>
                 </div>
                 <!-- tabs list -->
@@ -63,10 +62,9 @@
                                                 <search class="w-3 h-6 text-gray-200" />
                                             </div>
                                             <input type="text" placeholder="Find friends"
-                                                class="w-full  pr-4 bg-white border border-gray-100 border-solid pl-9 py-[0.375rem] rounded-[1.25rem] h-10 text-[90%] text-gray-200 placeholder:text-gray-200">
+                                                class="w-full outline-none focus:border-pink-500  pr-4 bg-white border border-gray-100 border-solid pl-9 py-[0.375rem] rounded-[1.25rem] h-10 text-[90%] text-gray-200 placeholder:text-gray-200">
                                         </div>
                                         <div class="mt-6">
-
                                             <span>No friend found</span>
                                         </div>
                                     </div>
@@ -78,7 +76,7 @@
                                                 <search class="w-3 h-6 text-gray-200" />
                                             </div>
                                             <input type="text" placeholder="Find groups"
-                                                class="w-full  pr-4 bg-white border border-gray-100 border-solid pl-9 py-[0.375rem] rounded-[1.25rem] h-10 text-[90%] text-gray-200 placeholder:text-gray-200">
+                                                class="w-full  pr-4 bg-white border border-gray-100 border-solid pl-9 py-[0.375rem] rounded-[1.25rem] h-10 text-[90%] text-gray-200 placeholder:text-gray-200 outline-none focus:border-pink-500">
                                         </div>
                                         <div class="mt-4">
                                             <div @click="showChatArea(group)" v-for="(group, index) in groups"
