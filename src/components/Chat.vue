@@ -1,9 +1,11 @@
 <template>
     <li class="z-50 w-[280px] relative ml-[1.375rem]">
         <div
-            class="w-full bg-white h-[312px] justify-between border border-solid border-[#e7edf2] absolute bottom-0 flex flex-col px-1 pt-1 rounded-tl-[12px] rounded-tr-[12px]">
+            class="w-full bg-white h-[312px] justify-between border border-solid border-gray-100 absolute bottom-0 flex flex-col px-1 pt-1 rounded-tl-[12px] rounded-tr-[12px]">
+
+            <!-- group info -->
             <div
-                class="relative flex items-center pb-1 border-b border-solid cursor-pointer border-[#e7edf2] space-x-2">
+                class="relative flex items-center pb-1 space-x-2 border-b border-gray-100 border-solid cursor-pointer">
                 <div class="relative ">
                     <img class="w-[30px] h-auto rounded-full"
                         src="https://mythemestore.com/beehive-preview/wp-content/uploads/group-avatars/6/5e2cce5312454-bpthumb.jpg"
@@ -17,6 +19,8 @@
                     <close class="w-4 h-4" />
                 </div>
             </div>
+
+            <!-- message area -->
             <div ref="messagesArea" class="relative flex flex-col h-full chat-list__scroll">
                 <div class="block h-full max-h-full ">
                     <div class="flex flex-col p-0 m-0 chat-area">
@@ -42,9 +46,11 @@
                     </div>
                 </div>
             </div>
+
+            <!-- message text -->
             <div>
                 <form @submit.prevent="sendMessage">
-                    <div class="flex border-t border-solid border-t-[#e7edf2]">
+                    <div class="flex border-t border-solid border-t-gray-100">
                         <div class="relative grow">
                             <input @focus.native="togglePicker()" ref="input" autofocus v-model="message" type="text"
                                 class="min-h-[26px] inline-block py-2 leading-[1.25] w-full outline-none text-[90%]"
@@ -118,10 +124,6 @@ function togglePicker() {
     height: 100%;
     max-height: 100vh;
 }
-
-
-
-
 
 .message-text {
     background-color: rgba(130, 36, 227, 0.05);

@@ -1,19 +1,45 @@
 <template>
-    <div class="fixed bottom-0 z-40 ">
-        <div :class="[collapsed ? 'w-20 bg-[#f8f9fb]' : 'w-[240px] bg-white']"
-            class="fixed top-0 bottom-0 right-0 flex flex-col max-h-screen   border-l border-solid border-[#e7edf2] chat-transition">
+    <div class="fixed bottom-0 z-20 ">
+        <div :class="[collapsed ? 'w-20 bg-gray-400' : 'w-[240px] bg-white']"
+            class="fixed top-0 bottom-0 right-0 flex flex-col max-h-screen border-l border-gray-100 border-solid chat-transition">
             <div class="flex flex-col">
-                <div class="flex justify-between h-20 px-6 py-2  border-b border-solid border-[#e7edf2] items-center">
+                <div class="flex items-center justify-between h-20 px-6 py-2 border-b border-gray-100 border-solid">
                     <div class="relative inline-flex items-center space-x-2">
                         <comments class="w-5 text-pink-500 h-7" />
-                        <div v-if="!collapsed" class="text-[1em] font-bold text-[#4f515b] quicksand">Messenger</div>
-                    </div>
-                    <div v-if="!collapsed">
-                        <div>
-                            <ellipsis class="w-4 h-7" />
+                        <div v-if="!collapsed" class="text-[1em] font-bold text-[#4f515b] quicksand">Messenger
                         </div>
                     </div>
+                    <div v-if="!collapsed">
+                        <Menu as="div" class="relative inline-block text-left">
+                            <div>
+                                <MenuButton class="inline-flex justify-center w-full px-4 py-2 ">
+                                    <ellipsis class="w-4 h-7" />
+
+                                </MenuButton>
+                            </div>
+                            <MenuItems
+                                class="absolute right-0 z-30 w-40 px-6 py-1 mt-2 origin-top-right bg-white border border-gray-100 border-solid rounded-xl">
+                                <div>
+                                    <MenuItem>
+                                    <div>
+                                        Mute
+                                    </div>
+                                    </MenuItem>
+                                </div>
+                            </MenuItems>
+                        </Menu>
+                    </div>
                 </div>
+                <div v-if="collapsed" class="px-6 mt-4">
+                    <div @click="showChatArea(group)" v-for="(group, index) in groups" :key="index"
+                        class="flex items-center my-4 cursor-pointer">
+                        <img class="rounded-full w-[30px] h-auto"
+                            src="https://mythemestore.com/beehive-preview/wp-content/uploads/group-avatars/6/5e2cce5312454-bpthumb.jpg"
+                            alt="group avatar">
+
+                    </div>
+                </div>
+                <!-- tabs list -->
                 <div v-if="!collapsed" class="relative px-6 py-3 overflow-hidden">
                     <div class="chat-list__scroll">
                         <TabGroup>
@@ -23,10 +49,11 @@
                                         Friends
                                     </button>
                                 </Tab>
-                                <Tab v-slot="{ selected }" as="template"> <button
-                                        :class="[selected ? ' text-pink-500 border-none outline-none' : '']">
+                                <Tab v-slot="{ selected }" as="template">
+                                    <button :class="[selected ? ' text-pink-500 border-none outline-none' : '']">
                                         Groups
-                                    </button></Tab>
+                                    </button>
+                                </Tab>
                             </TabList>
                             <TabPanels>
                                 <TabPanel>
@@ -60,7 +87,7 @@
                                                     src="https://mythemestore.com/beehive-preview/wp-content/uploads/group-avatars/8/5eb43993c2d5a-bpthumb.jpg"
                                                     alt="">
                                                 <div class="font-medium text-[#29292d] text-[0.85em]">{{ group.title
-                                                }}{{ group.status }}
+                                                }}
                                                 </div>
                                             </div>
                                         </div>
@@ -70,8 +97,9 @@
                         </TabGroup>
                     </div>
                 </div>
-                <div @click="collapsed = !collapsed"
-                    class="absolute inset-x-0 bottom-0 flex items-center h-20 px-6 space-x-2 bg-white border-t border-gray-100 border-solid cursor-pointer">
+                <!-- collapse  section -->
+                <div :class="[collapsed ? 'bg-gray-400' : 'bg-white']" @click="collapsed = !collapsed"
+                    class="absolute inset-x-0 bottom-0 flex items-center h-20 px-6 space-x-2 border-t border-gray-100 border-solid cursor-pointer">
                     <div :class="{ '-scale-x-100': collapsed }"
                         class="bg-pink-500 collapse-icon h-[30px] w-[30px] rounded-[50%] relative transition-all duration-500">
                         <div class="absolute inset-y-0 m-auto right-1 h-[20px] w-[20px]">
@@ -100,6 +128,8 @@ import ellipsis from '../assets/images/icons/ellipsis.svg'
 import search from '../assets/images/icons/search.svg'
 import AngleRight from '../assets/images/icons/angle-right.svg'
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+
 import { ref } from "vue";
 import Chat from './Chat.vue'
 
@@ -143,7 +173,7 @@ function showChatArea(group) {
     chats.value.push(group)
 }
 function closeChat(chat) {
-  chats.value.pop()
+    chats.value.pop()
 }
 
 
