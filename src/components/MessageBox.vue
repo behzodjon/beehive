@@ -54,12 +54,13 @@
                                                 class="w-full  pr-4 bg-white border border-gray-100 border-solid pl-9 py-[0.375rem] rounded-[1.25rem] h-10 text-[90%] text-gray-200 placeholder:text-gray-200">
                                         </div>
                                         <div class="mt-4">
-                                            <div @click="showChatAre(group)" v-for="(group, index) in groups"
+                                            <div @click="showChatArea(group)" v-for="(group, index) in groups"
                                                 :key="index" class="flex items-center mb-2 space-x-2 cursor-pointer">
                                                 <img class="rounded-full w-[30px] h-auto"
                                                     src="https://mythemestore.com/beehive-preview/wp-content/uploads/group-avatars/8/5eb43993c2d5a-bpthumb.jpg"
                                                     alt="">
-                                                <div class="font-medium text-[#29292d] text-[0.85em]">{{ group.title }}
+                                                <div class="font-medium text-[#29292d] text-[0.85em]">{{ group.title
+                                                }}{{ group.status }}
                                                 </div>
                                             </div>
                                         </div>
@@ -83,7 +84,13 @@
                 </div>
             </div>
         </div>
-        <Chat @close-chat="closeChat" v-if="showChat" />
+
+        <!-- chat windows -->
+        <div class="chat-windows">
+            <ul class="flex justify-end h-8 p-0 m-0">
+                <Chat v-for="(chat, index) in chats" :key="index" @close-chat="closeChat" :chat="chat" />
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -96,40 +103,47 @@ import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import { ref } from "vue";
 import Chat from './Chat.vue'
 
-const emit = defineEmits(['closeChat'])
+defineEmits(['closeChat'])
 
 const collapsed = ref(true)
-const showChat = ref(false)
 
 const groups = ref([
     {
         'image': 'https://mythemestore.com/beehive-preview/wp-conten…uploads/group-avatars/8/5eb43993c2d5a-bpthumb.jpg',
-        'title': 'Gamers'
+        'title': 'Gamers',
+        'status': false
     },
     {
         'image': 'https://mythemestore.com/beehive-preview/wp-conten…uploads/group-avatars/8/5eb43993c2d5a-bpthumb.jpg',
-        'title': 'Gamers'
+        'title': 'Gamers',
+        'status': false
     },
     {
         'image': 'https://mythemestore.com/beehive-preview/wp-conten…uploads/group-avatars/8/5eb43993c2d5a-bpthumb.jpg',
-        'title': 'Gamers'
+        'title': 'Gamers',
+        'status': false
     },
     {
         'image': 'https://mythemestore.com/beehive-preview/wp-conten…uploads/group-avatars/8/5eb43993c2d5a-bpthumb.jpg',
-        'title': 'Gamers'
+        'title': 'Gamers',
+        'status': false
     },
     {
         'image': 'https://mythemestore.com/beehive-preview/wp-conten…uploads/group-avatars/8/5eb43993c2d5a-bpthumb.jpg',
-        'title': 'Gamers'
+        'title': 'Gamers',
+        'status': false
     },
 ])
 
 
-function showChatAre(group) {
-    showChat.value = true
+const chats = ref([])
+
+
+function showChatArea(group) {
+    chats.value.push(group)
 }
-function closeChat() {
-    showChat.value = false
+function closeChat(chat) {
+  chats.value.pop()
 }
 
 
@@ -154,25 +168,6 @@ function closeChat() {
     max-height: calc(100vh - 190px);
 }
 
-.chat-list__scroll:hover {
-    overflow: hidden scroll;
-}
-
-.chat-list__scroll::-webkit-scrollbar {
-    width: 4px;
-    opacity: 0;
-}
-
-
-.chat-list__scroll::-webkit-scrollbar-thumb {
-    border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.1);
-    height: calc(100% - 10px);
-}
-
-.chat-list__scroll::-webkit-scrollbar-track {
-    border-radius: 50px;
-}
 
 .chat-windows {
     width: calc(100vw - 112px);

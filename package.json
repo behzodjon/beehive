@@ -10,6 +10,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.6.0",
     "@heroicons/vue": "^1.0.6",
+    "dayjs": "^1.11.2",
     "emoji-mart-vue-fast": "^10.2.1",
     "vite-svg-loader": "^3.3.0",
     "vue": "^3.2.25",

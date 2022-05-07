@@ -39,3 +39,24 @@ body {
 .ps__rail-y {
     width: 4px !important;
 }
+
+
+.chat-list__scroll:hover {
+    overflow: hidden scroll;
+}
+
+.chat-list__scroll::-webkit-scrollbar {
+    width: 4px;
+    opacity: 0;
+}
+
+
+.chat-list__scroll::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    height: calc(100% - 30px);
+}
+
+.chat-list__scroll::-webkit-scrollbar-track {
+    border-radius: 50px;
+}
