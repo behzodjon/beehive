@@ -91,7 +91,9 @@
                                 <div class="relative block px-2">
                                     <div
                                         class="bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
-                                        <UserPlus class="w-4 h-4 text-[#626c72] " />
+                                        <BaseAlertDropdown title="Friends requests" text="No friend request.">
+                                            <UserPlus  class="w-4 h-4 text-[#626c72] " />
+                                        </BaseAlertDropdown>
                                     </div>
                                 </div>
                             </li>
@@ -99,7 +101,9 @@
                                 <div class="relative block px-2">
                                     <div
                                         class="bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
-                                        <bell class="w-4 h-4 text-[#626c72] " />
+                                        <BaseAlertDropdown title="Notifications" text="No notifications found">
+                                            <bell  class="w-4 h-4 text-[#626c72] " />
+                                        </BaseAlertDropdown>
                                     </div>
                                 </div>
                             </li>
@@ -107,7 +111,9 @@
                                 <div class="relative block px-2">
                                     <div
                                         class="bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
-                                        <EnvelopeOpen class="w-4 h-4 text-[#626c72] " />
+                                        <BaseAlertDropdown title="Unread messages" text="No messages to read.">
+                                            <EnvelopeOpen class="w-4 h-4 text-[#626c72] " />
+                                        </BaseAlertDropdown>
                                     </div>
                                 </div>
                             </li>
@@ -130,7 +136,6 @@
                                 </div>
                             </li>
                         </ul>
-
                     </div>
                 </div>
             </div>
@@ -140,6 +145,8 @@
                 </div>
             </main>
         </div>
+
+        <!-- message box -->
         <MessageBox />
     </div>
 </template>
@@ -164,6 +171,7 @@ import bell from '../assets/images/icons/bell.svg'
 import EnvelopeOpen from '../assets/images/icons/envelope-open.svg'
 import ShoppingBag from '../assets/images/icons/shopping-bag.svg'
 import MessageBox from '../components/MessageBox.vue'
+import BaseAlertDropdown from '../components/BaseAlertDropdown.vue'
 
 const sidebarOpen = ref(false)
 const windowTop = ref(false)
