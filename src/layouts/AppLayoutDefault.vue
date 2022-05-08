@@ -131,7 +131,7 @@
                                         <img class="rounded-[50%] w-full h-full object-cover"
                                             src="../assets/images/john-doe.jpg" alt="avatar">
                                     </div>
-                                    <span class="block text-[#29292d]">@ user</span>
+                                    <span class="block text-dark-200">@ user</span>
 
                                 </div>
                             </li>

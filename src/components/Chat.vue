@@ -12,8 +12,8 @@
                         alt="">
                 </div>
                 <ul class="flex flex-col">
-                    <a class="font-semibold text-[#29292d]">Photography</a>
-                    <small class="text-[80%] leading-[1] text-[#bbbbdc]"> Offline</small>
+                    <a class="font-semibold text-dark-200">Photography</a>
+                    <small class="text-[80%] leading-[1] text-gray-50"> Offline</small>
                 </ul>
                 <div @click="$emit('closeChat', chat)" class="absolute right-0 text-red-600 cursor-pointer top-1">
                     <close class="w-4 h-4" />
@@ -30,7 +30,7 @@
                                     <div class="flex flex-col flex-wrap items-end w-full text-right">
                                         <div v-for="(message, index) in messages" :key="index" class="w-full">
                                             <div v-if="index == 0"
-                                                class="inline-flex justify-center text-[80%] w-full text-[#bbbbdc]">
+                                                class="inline-flex justify-center text-[80%] w-full text-gray-50">
                                                 {{ dayjs(message.date).format('MMM D, YYYY h:mm A') }}</div>
                                             <div class="flex justify-end">
                                                 <div

@@ -84,7 +84,7 @@
                                                 <img class="rounded-full w-[30px] h-auto"
                                                     src="https://mythemestore.com/beehive-preview/wp-content/uploads/group-avatars/8/5eb43993c2d5a-bpthumb.jpg"
                                                     alt="">
-                                                <div class="font-medium text-[#29292d] text-[0.85em]">{{ group.title
+                                                <div class="font-medium text-dark-200 text-[0.85em]">{{ group.title
                                                 }}
                                                 </div>
                                             </div>

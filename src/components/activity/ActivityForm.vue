@@ -52,7 +52,7 @@
                                     </div>
                                     <!-- image actions -->
                                     <div class="flex items-center space-x-1">
-                                        <div class="text-[#bbbbdc] text-[90%] mr-2">{{ formatBytes(form.imageSize) }}
+                                        <div class="text-gray-50 text-[90%] mr-2">{{ formatBytes(form.imageSize) }}
                                         </div>
                                         <checkCircle @click="editMode = false" v-if="editMode"
                                             class="w-4 h-4 cursor-pointer" />

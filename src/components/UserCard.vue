@@ -6,15 +6,15 @@
             </router-link>
             <div class="flex flex-col mt-3">
                 <router-link to="#" class="text-base font-semibold text-center text-dark-200">John Doe</router-link>
-                <small class="text-center text-[#bbbbdc] leading-[1.5] text-[85%]">Member</small>
+                <small class="text-center text-gray-50 leading-[1.5] text-[85%]">Member</small>
                 <ul class="mt-3 pt-2 border-t border-solid border-[#e7edf2] text-center">
                     <li class="inline-block px-2 leading-[1.75] text-center">
                         <span class="text-base font-semibold">1</span>
-                        <p class="text-[#bbbbdc] text-[90%]">Friends</p>
+                        <p class="text-gray-50 text-[90%]">Friends</p>
                     </li>
                     <li class="inline-block px-2 leading-[1.75] text-center">
                         <span class="text-base font-semibold">5</span>
-                        <p class="text-[#bbbbdc] text-[90%]">Groups</p>
+                        <p class="text-gray-50 text-[90%]">Groups</p>
                     </li>
                 </ul>
             </div>
