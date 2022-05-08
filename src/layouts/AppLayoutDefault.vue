@@ -54,8 +54,8 @@
                     </div>
 
                     <!-- panel light -->
-                    <div class="border-r border-solid border-[#e7edf2] pb-4  px-4 w-full bg-[#f8f9fb] py-[90px]">
-                        <PanelMenu />
+                    <div class="border-r border-solid border-[#e7edf2] pb-4  px-4 w-full bg-gray-400 py-[90px]">
+                        <ThePanelMenu />
                     </div>
                 </perfect-scrollbar>
             </div>
@@ -89,7 +89,7 @@
                             <li class="relative">
                                 <div class="relative block px-2">
                                     <div
-                                        class="bg-[#f8f9fb] text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
+                                        class="bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
                                         <UserPlus class="w-4 h-4 text-[#626c72] " />
                                     </div>
                                 </div>
@@ -97,7 +97,7 @@
                             <li class="relative">
                                 <div class="relative block px-2">
                                     <div
-                                        class="bg-[#f8f9fb] text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
+                                        class="bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
                                         <bell class="w-4 h-4 text-[#626c72] " />
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@
                             <li class="relative">
                                 <div class="relative block px-2">
                                     <div
-                                        class="bg-[#f8f9fb] text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
+                                        class="bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
                                         <EnvelopeOpen class="w-4 h-4 text-[#626c72] " />
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@
                             <li class="relative">
                                 <div class="relative block px-2">
                                     <div
-                                        class="bg-[#f8f9fb] text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
+                                        class="bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
                                         <ShoppingBag class="w-4 h-4 text-[#626c72] " />
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@ import {
     XIcon,
 } from '@heroicons/vue/outline'
 import UserCard from '../components/UserCard.vue'
-import PanelMenu from '../components/PanelMenu.vue'
+import ThePanelMenu from '../components/ThePanelMenu.vue'
 import search from '../assets/images/icons/search.svg'
 import UserPlus from '../assets/images/icons/user-plus.svg'
 import bell from '../assets/images/icons/bell.svg'

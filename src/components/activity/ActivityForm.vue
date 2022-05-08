@@ -1,0 +1,120 @@
+<template>
+    <div class="relative px-8 py-10 mb-10 bg-white rounded-xl activity-form">
+        <!-- form -->
+        <form class="relative">
+            <div>
+                <div class="flex space-x-4">
+                    <router-link to="#">
+                        <img class="w-10 h-auto rounded-full"
+                            src="https://mythemestore.com/beehive-preview/wp-content/uploads/avatars/3/1650303361-bpthumb.jpg"
+                            alt="">
+                    </router-link>
+                    <div class="relative">
+                        <textarea :class="[textAreaFocus ? 'h-auto border-none' : 'h-10 border-gray-100']"
+                            @focus.native="textAreaFocus = true" placeholder="What's new, Basenane?" cols="50" rows="4"
+                            class="w-full  text-[90%] px-4 pt-[10px] pb-2 border  border-solid rounded-2xl text-[#626c72] bg-transparent leading-5 placeholder:text-[#626c72] outline-none focus:border-transparent focus:ring-transparent"></textarea>
+
+                    </div>
+                </div>
+                <!-- attach media -->
+                <div v-if="textAreaFocus">
+                    <div class="relative py-2 border-t border-b border-gray-100 border-solid">
+                        <label for="upload" class="relative flex items-center space-x-1 cursor-pointer">
+                            <div class="bg-[#f7f7f7] rounded-[1.25rem] p-2">
+                                <paperclip class="w-4 h-4 " />
+                            </div>
+                            <span class="inline-block bg-[#f7f7f7] rounded-[1.25rem] px-4 py-1 text-pink-500">Attach
+                                media</span>
+                            <input @change="onImageChoose" type="file" id="upload" class="hidden">
+                        </label>
+                        <!-- editing images -->
+                        <div v-if="form.image_url" class="w-full">
+                            <ul class="mt-2">
+                                <li class="relative flex w-full p-1 mb-2 space-x-1 overflow-hidden bg-gray-400 rounded-xl">
+                                    <div class="h-full w-9">
+                                        <img class=" rounded-xl"  :src="form.image_url" alt="form-name">
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <div class="flex flex-col">
+                                            <label for="image-title" class="text-[1em] font-medium">Title:</label>
+                                            <input type="text" id="image-title" class="w-[75%] bg-white block h-10 px-4 py-1 rounded-3xl border border-solid border-gray-100 text-sm">
+                                        </div>
+                                        <div>
+                                            <label for="desc">Description:</label>
+                                            <textarea class="w-[75%] bg-white block h-20 px-4 py-1 rounded-3xl border border-solid border-gray-100 text-sm" name="" id="" cols="30" rows="50"></textarea>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex justify-between mt-4">
+                        <select
+                            class="py-1 text-[90%] pl-6 pr-8  bg-transparent border border-gray-100 border-solid rounded-full outline-none focus:outline-none focus:border-pink-500"
+                            name="" id="">
+                            <option value="profile">Post in: Profile</option>
+                            <option value="post">Post in: Group</option>
+                        </select>
+                        <div class="flex space-x-3">
+                            <input @click="textAreaFocus = false" type="reset"
+                                class="text-pink-500 cursor-pointer hover:underline" value="Cancel">
+                            <input type="submit" class="px-8 py-2 text-white bg-pink-500 btn-gradient rounded-[30px]"
+                                value="Post Update">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</template>
+
+<script setup>
+import { ref,reactive } from 'vue';
+import paperclip from '../../assets/images/icons/paperclip.svg'
+
+
+const textAreaFocus = ref(false)
+
+const form = reactive({
+    image: null,
+    image_url: null,
+})
+
+function onImageChoose(ev) {
+    const file = ev.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+        // The field to send on backend and apply validations
+        form.image = reader.result;
+        // The field to display here
+        form.image_url = reader.result;
+        ev.target.value = "";
+    };
+    reader.readAsDataURL(file);
+}
+
+</script>
+<style  scoped>
+.activity-form {
+    box-shadow: 0 20px 90px rgb(58 46 68 / 5%);
+}
+
+.btn-gradient {
+    background-image: linear-gradient(90deg, #8224e3 0, #a968ec 50%, #8224e3 100%);
+    box-shadow: 0 1px 2px 0 rgb(130 36 227 / 50%);
+}
+
+.activity-form::before {
+    content: "";
+    background: #fff;
+    height: 95%;
+    border-radius: 12px;
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    margin: auto;
+    bottom: -13px;
+    z-index: -1;
+    box-shadow: 0 20px 90px rgb(58 46 68 / 4%);
+}
+</style>
