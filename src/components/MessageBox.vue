@@ -1,7 +1,7 @@
 <template>
     <div class="fixed bottom-0 z-20 ">
         <div :class="[collapsed ? 'w-20 bg-gray-400' : 'w-[240px] bg-white']"
-            class="fixed top-0 bottom-0 right-0 flex flex-col max-h-screen border-l border-gray-100 border-solid chat-transition">
+            class="fixed top-0 bottom-0 right-0 flex flex-col max-h-screen border-l border-gray-100 border-solid smooth-transition">
             <div class="flex flex-col">
                 <div class="flex items-center justify-between h-20 px-6 py-2 border-b border-gray-100 border-solid">
                     <div class="relative inline-flex items-center space-x-2">
@@ -179,9 +179,7 @@ function closeChat(chat) {
 </script>
 
 <style  scoped>
-.chat-transition {
-    transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
-}
+
 
 .collapse-icon {
     background-image: linear-gradient(135deg, #a968ec 0%, #8224e3 55%, #c395f1 110%);

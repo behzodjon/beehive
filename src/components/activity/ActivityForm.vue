@@ -30,19 +30,34 @@
                         <!-- editing images -->
                         <div v-if="form.image_url" class="w-full">
                             <ul class="mt-2">
-                                <li class="relative flex w-full p-1 mb-2 space-x-1 overflow-hidden bg-gray-400 rounded-xl">
-                                    <div class="h-full w-9">
-                                        <img class=" rounded-xl"  :src="form.image_url" alt="form-name">
+                                <li
+                                    class="relative flex justify-between w-full p-1 mb-2 space-x-1 overflow-hidden bg-gray-400 rounded-xl">
+                                    <div class="flex h-full space-x-1 w-9">
+                                        <img class=" rounded-xl" :src="form.image_url" alt="form-name">
+                                        <span v-if="!editMode" class="block text-[1em] font-medium">{{ form.imageName
+                                        }}</span>
                                     </div>
-                                    <div class="flex flex-col">
+                                    <div v-if="editMode" class="flex flex-col">
                                         <div class="flex flex-col">
                                             <label for="image-title" class="text-[1em] font-medium">Title:</label>
-                                            <input type="text" id="image-title" class="w-[75%] bg-white block h-10 px-4 py-1 rounded-3xl border border-solid border-gray-100 text-sm">
+                                            <input v-model="form.imageName" type="text" id="image-title"
+                                                class="w-[75%] bg-white block h-10 px-4 py-1 rounded-3xl border border-solid border-gray-100 text-sm">
                                         </div>
                                         <div>
                                             <label for="desc">Description:</label>
-                                            <textarea class="w-[75%] bg-white block h-20 px-4 py-1 rounded-3xl border border-solid border-gray-100 text-sm" name="" id="" cols="30" rows="50"></textarea>
+                                            <textarea
+                                                class="w-[75%] bg-white block h-20 px-4 py-1 rounded-3xl border border-solid border-gray-100 text-sm"
+                                                name="" id="" cols="30" rows="50"></textarea>
                                         </div>
+                                    </div>
+                                    <!-- image actions -->
+                                    <div class="flex items-center space-x-1">
+                                        <div class="text-[#bbbbdc] text-[90%] mr-2">{{ formatBytes(form.imageSize) }}
+                                        </div>
+                                        <checkCircle @click="editMode = false" v-if="editMode"
+                                            class="w-4 h-4 cursor-pointer" />
+                                        <pen @click="editMode = true" v-else class="w-4 h-4 cursor-pointer " />
+                                        <times class="w-4 h-4 cursor-pointer" />
                                     </div>
                                 </li>
                             </ul>
@@ -58,7 +73,8 @@
                         <div class="flex space-x-3">
                             <input @click="textAreaFocus = false" type="reset"
                                 class="text-pink-500 cursor-pointer hover:underline" value="Cancel">
-                            <input type="submit" class="px-8 py-2 text-white bg-pink-500 btn-gradient rounded-[30px]"
+                            <input type="submit"
+                                class="px-8 py-2 text-white bg-pink-500 btn-gradient rounded-[30px] cursor-pointer"
                                 value="Post Update">
                         </div>
                     </div>
@@ -69,19 +85,28 @@
 </template>
 
 <script setup>
-import { ref,reactive } from 'vue';
+import { ref, reactive } from 'vue';
 import paperclip from '../../assets/images/icons/paperclip.svg'
+import checkCircle from '../../assets/images/icons/check-circle.svg'
+import times from '../../assets/images/icons/times.svg'
+import pen from '../../assets/images/icons/pen.svg'
 
 
+const editMode = ref(false)
 const textAreaFocus = ref(false)
 
 const form = reactive({
     image: null,
+    imageName: null,
+    imageSize: null,
     image_url: null,
 })
 
 function onImageChoose(ev) {
     const file = ev.target.files[0];
+    form.imageName = file.name;
+    form.imageSize = file.size;
+
     const reader = new FileReader();
     reader.onload = () => {
         // The field to send on backend and apply validations
@@ -91,6 +116,18 @@ function onImageChoose(ev) {
         ev.target.value = "";
     };
     reader.readAsDataURL(file);
+}
+
+function formatBytes(bytes, decimals = 2) {
+    if (bytes === 0) return '0 Bytes';
+
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
 </script>

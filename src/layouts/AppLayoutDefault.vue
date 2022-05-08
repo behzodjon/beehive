@@ -63,7 +63,8 @@
 
         <!-- content block -->
         <div class="md:pl-[22%] flex flex-col">
-            <div class="sticky top-0 z-10 flex flex-shrink-0 h-20 bg-white shadow">
+            <div :class="[windowTop > 0 ? 'h-[60px]' : 'h-20']"
+                class="sticky top-0 z-10 flex flex-shrink-0 bg-white shadow smooth-transition">
                 <button type="button"
                     class="px-4 text-gray-500 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
                     @click="sidebarOpen = true">
@@ -144,7 +145,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import {
     Dialog,
     DialogOverlay,
@@ -164,8 +165,19 @@ import EnvelopeOpen from '../assets/images/icons/envelope-open.svg'
 import ShoppingBag from '../assets/images/icons/shopping-bag.svg'
 import MessageBox from '../components/MessageBox.vue'
 
-
-
 const sidebarOpen = ref(false)
+const windowTop = ref(false)
+
+function changeNavbar() {
+    windowTop.value = window.top.scrollY
+}
+
+onMounted(() => {
+    window.addEventListener('scroll', changeNavbar);
+})
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', changeNavbar);
+})
 
 </script>
