@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import store from './store'
 import router from './router'
 
 import './index.css'
@@ -10,5 +11,6 @@ import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
 
 const app = createApp(App)
 app.use(router)
+app.use(store)
 app.use(PerfectScrollbar)
 app.mount('#app')
