@@ -1,9 +1,9 @@
 <template>
-    <div :class="[isMenuVisible ? 'fixed ml-[80%]' : '']" class="w-full overflow-x-hidden smooth-transition">
+    <div :class="[isMenuVisible ? 'fixed ml-[80%]' : '']" class="w-full h-full overflow-x-hidden smooth-transition">
         <!-- sidebar -->
         <div class="
         w-4/5
-        md:translate-x-0 md:w-[22%]
+        md:translate-x-0 md:w-20 xl:w-[22%]
         fixed
         z-30
         h-full
@@ -22,38 +22,41 @@
 
 
         <!-- content block -->
-        <div class="md:pl-[22%] flex flex-col">
-            <div :class="[windowTop > 0 ? 'h-[60px]' : 'h-20']"
-                class="sticky top-0 z-10 flex flex-shrink-0 bg-white shadow smooth-transition">
-                <div class="flex items-center px-4 py-2 bg-pink-500 lg:hidden primary-gradient h-11">
-                    <button type="button" class="pr-4 text-white focus:outline-none md:hidden"
-                        @click="toggleMobileMenu">
-                        <span class="sr-only">Open sidebar</span>
-                        <XIcon v-if="isMenuVisible" class="w-6 h-6" aria-hidden="true" />
-                        <MenuAlt2Icon v-else class="w-6 h-6" aria-hidden="true" />
-                    </button>
-                    <form class="flex w-full bg-transparent md:ml-0" action="#" method="GET">
-                        <label for="search-field" class="sr-only">Search</label>
-                        <div class="relative w-full text-gray-400 focus-within:text-gray-600">
-                            <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
-                                <search class="w-4 h-4 text-white lg:text-gray-200" />
+        <div class="md:pl-20 xl:pl-[22%] flex flex-col">
+            <div :class="[windowTop > 0 ? 'md:h-[60px] -top-[44px] md:top-0' : 'md:h-20 top-0']"
+                class="fixed z-10 flex flex-shrink-0 w-full bg-white shadow smooth-transition">
+                <div class="flex flex-col w-full md:hidden">
+                    <div class="flex items-center px-4 py-2 bg-pink-500 xl:hidden primary-gradient h-11">
+                        <button type="button" class="pr-4 text-white focus:outline-none md:hidden"
+                            @click="toggleMobileMenu">
+                            <span class="sr-only">Open sidebar</span>
+                            <XIcon v-if="isMenuVisible" class="w-6 h-6" aria-hidden="true" />
+                            <MenuAlt2Icon v-else class="w-6 h-6" aria-hidden="true" />
+                        </button>
+                        <form class="flex w-full bg-transparent md:ml-0" action="#" method="GET">
+                            <label for="search-field" class="sr-only">Search</label>
+                            <div class="relative w-full text-gray-400 focus-within:text-gray-600">
+                                <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none">
+                                    <search class="w-4 h-4 text-white xl:text-gray-200" />
+                                </div>
+                                <input id="search-field"
+                                    class="block w-full h-full pt-0 pb-1 pl-6 pr-3 text-sm text-white placeholder-white bg-transparent border-t-0 border-b border-white/40 xl:placeholder-gray-500 xl:text-gray-900 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent border-x-0"
+                                    placeholder="Search..." type="search" name="search" />
                             </div>
-                            <input id="search-field"
-                                class="block w-full h-full pt-0 pb-1 pl-6 pr-3 text-sm text-white placeholder-white bg-transparent border-t-0 border-b border-white/40 lg:placeholder-gray-500 lg:text-gray-900 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent border-x-0"
-                                placeholder="Search..." type="search" name="search" />
-                        </div>
-                    </form>
+                        </form>
 
-                    <div class="relative flex items-center pl-2 space-x-1">
-                        <div class="flex items-center justify-center w-8 h-8 ">
-                            <img class="rounded-[50%] w-full h-full object-cover" src="../assets/images/john-doe.jpg"
-                                alt="avatar">
-                        </div>
+                        <div class="relative flex items-center pl-2 space-x-1">
+                            <div class="flex items-center justify-center w-6 h-6 ">
+                                <img class="rounded-[50%] w-full h-full object-cover"
+                                    src="../assets/images/john-doe.jpg" alt="avatar">
+                            </div>
 
+                        </div>
                     </div>
+                    <AlertList />
                 </div>
-                <div class="hidden lg:flex justify-between flex-1 pl-[25px] pr-[95px]">
-                    <div class="flex flex-1 px-4">
+                <div class="hidden md:flex justify-between w-full pl-[25px] pr-[95px]">
+                    <div class="flex w-full px-4">
                         <form class="flex w-full md:ml-0" action="#" method="GET">
                             <label for="search-field" class="sr-only">Search</label>
                             <div class="relative w-full text-gray-400 focus-within:text-gray-600">
@@ -66,7 +69,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="flex items-center ml-4 md:ml-6">
+                    <div class="flex items-center w-full ml-4 md:ml-6">
                         <ul class="flex">
                             <li class="relative">
                                 <div class="relative block px-2">
@@ -121,14 +124,14 @@
                 </div>
             </div>
             <main>
-                <div class="w-full px-4 mx-auto">
+                <div class="w-full px-4 mx-auto mt-20">
                     <slot />
                 </div>
             </main>
         </div>
 
         <!-- message box -->
-        <MessageBox class="hidden lg:block" />
+        <MessageBox />
     </div>
 </template>
 
@@ -149,6 +152,7 @@ import MessageBox from '../components/MessageBox.vue'
 import BaseAlertDropdown from '../components/BaseAlertDropdown.vue'
 import { useStore } from "vuex";
 import SideBarMenu from '../components/SideBarMenu.vue'
+import AlertList from '../components/AlertList.vue'
 const store = useStore();
 const windowTop = ref(false)
 

@@ -1,5 +1,5 @@
 <template>
-    <li class="z-50 w-[280px] relative ml-[1.375rem]">
+    <li class="z-50 xl:w-[280px] absolute xl:relative ml-[1.375rem] top-9 xl:top-0 w-60 xl:left-0 left-3">
         <div
             class="w-full bg-white h-[312px] justify-between border border-solid border-gray-100 absolute bottom-0 flex flex-col px-1 pt-1 rounded-tl-[12px] rounded-tr-[12px]">
 

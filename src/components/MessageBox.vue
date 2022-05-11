@@ -1,7 +1,7 @@
 <template>
-    <div class="fixed bottom-0 z-20 ">
+    <div class="fixed bottom-0 z-20 w-full ">
         <div :class="[collapsed ? 'w-20 bg-gray-400' : 'w-[240px] bg-white']"
-            class="fixed top-0 bottom-0 right-0 flex flex-col max-h-screen border-l border-gray-100 border-solid smooth-transition">
+            class="fixed top-0 bottom-0 right-0 flex-col hidden max-h-screen border-l border-gray-100 border-solid md:flex smooth-transition">
             <div class="flex flex-col">
                 <div class="flex items-center justify-between h-20 px-6 py-2 border-b border-gray-100 border-solid">
                     <div class="relative inline-flex items-center space-x-2">
@@ -10,24 +10,7 @@
                         </div>
                     </div>
                     <div v-if="!collapsed">
-                        <Menu as="div" class="relative inline-block text-left">
-                            <div>
-                                <MenuButton class="inline-flex justify-center w-full px-4 py-2 ">
-                                    <ellipsis class="w-4 h-7" />
-
-                                </MenuButton>
-                            </div>
-                            <MenuItems
-                                class="absolute right-0 z-30 w-40 px-6 py-1 mt-2 origin-top-right bg-white border border-gray-100 border-solid rounded-xl">
-                                <div>
-                                    <MenuItem>
-                                    <div>
-                                        Mute
-                                    </div>
-                                    </MenuItem>
-                                </div>
-                            </MenuItems>
-                        </Menu>
+                        <MuteAction />
                     </div>
                 </div>
                 <div v-if="collapsed" class="px-6 mt-4">
@@ -41,58 +24,7 @@
                 <!-- tabs list -->
                 <div v-if="!collapsed" class="relative px-6 py-3 overflow-hidden">
                     <div class="chat-list__scroll">
-                        <TabGroup>
-                            <TabList class="flex space-x-3">
-                                <Tab v-slot="{ selected }" as="template">
-                                    <button :class="[selected ? ' text-pink-500 border-none outline-none' : '']">
-                                        Friends
-                                    </button>
-                                </Tab>
-                                <Tab v-slot="{ selected }" as="template">
-                                    <button :class="[selected ? ' text-pink-500 border-none outline-none' : '']">
-                                        Groups
-                                    </button>
-                                </Tab>
-                            </TabList>
-                            <TabPanels>
-                                <TabPanel>
-                                    <div>
-                                        <div class=" max-h-[42px] relative mt-4">
-                                            <div class="absolute -translate-y-1/2 left-4 top-1/2">
-                                                <search class="w-3 h-6 text-gray-200" />
-                                            </div>
-                                            <input type="text" placeholder="Find friends"
-                                                class="w-full outline-none focus:border-pink-500  pr-4 bg-white border border-gray-100 border-solid pl-9 py-[0.375rem] rounded-[1.25rem] h-10 text-[90%] text-gray-200 placeholder:text-gray-200">
-                                        </div>
-                                        <div class="mt-6">
-                                            <span>No friend found</span>
-                                        </div>
-                                    </div>
-                                </TabPanel>
-                                <TabPanel>
-                                    <div>
-                                        <div class=" max-h-[42px] relative mt-4">
-                                            <div class="absolute -translate-y-1/2 left-4 top-1/2">
-                                                <search class="w-3 h-6 text-gray-200" />
-                                            </div>
-                                            <input type="text" placeholder="Find groups"
-                                                class="w-full  pr-4 bg-white border border-gray-100 border-solid pl-9 py-[0.375rem] rounded-[1.25rem] h-10 text-[90%] text-gray-200 placeholder:text-gray-200 outline-none focus:border-pink-500">
-                                        </div>
-                                        <div class="mt-4">
-                                            <div @click="showChatArea(group)" v-for="(group, index) in groups"
-                                                :key="index" class="flex items-center mb-2 space-x-2 cursor-pointer">
-                                                <img class="rounded-full w-[30px] h-auto"
-                                                    src="https://mythemestore.com/beehive-preview/wp-content/uploads/group-avatars/8/5eb43993c2d5a-bpthumb.jpg"
-                                                    alt="">
-                                                <div class="font-medium text-dark-200 text-[0.85em]">{{ group.title
-                                                }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </TabPanel>
-                            </TabPanels>
-                        </TabGroup>
+                        <MessageBoxTabs :groups="groups" @show-chat-area="showChatArea" />
                     </div>
                 </div>
                 <!-- collapse  section -->
@@ -112,8 +44,31 @@
         </div>
 
         <!-- chat windows -->
-        <div class="chat-windows">
+        <div class="w-full md:w-[90vw]">
             <ul class="flex justify-end h-8 p-0 m-0">
+                <li class="relative block ml-6 lg:hidden">
+                    <div class="relative inline-flex items-center">
+                        <div
+                        @click="showMobileChat = !showMobileChat"
+                            class="w-8 h-8 p-2 mr-4 text-white bg-pink-500 rounded-br-none rounded-t-xl rounded-bl-xl ">
+                            <comments class="w-4 h-4 text-white" />
+                        </div>
+                        <div v-show="showMobileChat"  class="w-[255px] bg-white absolute right-0 rounded-t-xl">
+                            <div class="absolute w-full bg-white border border-gray-100 bottom-5 rounded-xl">
+                                <div class="w-full bg-white h-[312px]  flex flex-col rounded-xl">
+                                    <div class="flex justify-between px-4 py-2 border border-gray-100 cursor-pointer rounded-t-xl">
+                                        <div class="relative inline-flex items-center">
+                                            <h5 class="text-pink-500 text-[1em]">Messenger</h5>
+                                        </div>
+                                    </div>
+                                    <div class="chat-list__scroll">
+                                        <MessageBoxTabs class="p-4" :groups="groups" @show-chat-area="showChatArea" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
                 <Chat v-for="(chat, index) in chats" :key="index" @close-chat="closeChat" :chat="chat" />
             </ul>
         </div>
@@ -122,18 +77,17 @@
 
 <script setup>
 import comments from '../assets/images/icons/comments.svg'
-import ellipsis from '../assets/images/icons/ellipsis.svg'
-import search from '../assets/images/icons/search.svg'
 import AngleRight from '../assets/images/icons/angle-right.svg'
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 
 import { ref } from "vue";
 import Chat from './Chat.vue'
+import MuteAction from './MuteAction.vue'
+import MessageBoxTabs from './MessageBoxTabs.vue'
 
-defineEmits(['closeChat'])
+defineEmits(['closeChat', 'showChatArea'])
 
 const collapsed = ref(true)
+const showMobileChat = ref(false)
 
 const groups = ref([
     {
@@ -179,8 +133,6 @@ function closeChat(chat) {
 </script>
 
 <style  scoped>
-
-
 .collapse-icon {
     background-image: linear-gradient(135deg, #a968ec 0%, #8224e3 55%, #c395f1 110%);
     background-size: 200% auto;
@@ -192,10 +144,5 @@ function closeChat(chat) {
     height: 100%;
     width: calc(100% + 15px);
     max-height: calc(100vh - 190px);
-}
-
-
-.chat-windows {
-    width: calc(100vw - 112px);
 }
 </style>
