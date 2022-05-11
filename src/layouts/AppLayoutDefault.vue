@@ -141,8 +141,6 @@ import {
     MenuAlt2Icon,
     XIcon,
 } from '@heroicons/vue/outline'
-import UserCard from '../components/UserCard.vue'
-import ThePanelMenu from '../components/ThePanelMenu.vue'
 import search from '../assets/images/icons/search.svg'
 import UserPlus from '../assets/images/icons/user-plus.svg'
 import bell from '../assets/images/icons/bell.svg'

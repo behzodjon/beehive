@@ -32,15 +32,26 @@
                         <div class="mb-3">
                             <div>
                                 <router-link class="font-semibold text-dark-200" :to="'#'">Basenane</router-link>
-                                 posted an update
+                                posted an update
                             </div>
                             <div class="text-[90%] text-gray-50">
                                 3 hours, 2 minutes ago
                             </div>
+                            <div>
+                                <p>@sophia tset</p>
+                            </div>
+                            <div class="relative flex items-center py-4 mt-4 space-x-4 border-gray-100 border-y">
+                                <div class="flex items-center space-x-1 text-pink-500" >
+                                    <like class="w-4 h-4 " />
+                                    <span class="block">Like</span>
+                                </div>
+                                 <router-link to="#" class="flex items-center space-x-1 " >
+                                    <span class="text-[#838daa]">Comment</span>
+                                    <span class="block px-[6px] border border-gray-100 rounded-full text-[85%]">0</span>
+                                </router-link>
+                            </div>
                         </div>
-                        <div>
-                            
-                        </div>
+
                     </div>
                 </TabPanel>
             </TabPanels>
@@ -50,6 +61,7 @@
 
 <script setup>
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+import like from '../../assets/images/icons/like.svg'
 
 
 </script>

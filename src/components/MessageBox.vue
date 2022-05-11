@@ -1,7 +1,7 @@
 <template>
     <div class="fixed bottom-0 z-20 w-full ">
         <div :class="[collapsed ? 'w-20 bg-gray-400' : 'w-[240px] bg-white']"
-            class="fixed top-0 bottom-0 right-0 flex-col hidden max-h-screen border-l border-gray-100 border-solid md:flex smooth-transition">
+            class="fixed top-0 bottom-0 right-0 flex-col hidden max-h-screen border-l border-gray-100 border-solid lg:flex smooth-transition">
             <div class="flex flex-col">
                 <div class="flex items-center justify-between h-20 px-6 py-2 border-b border-gray-100 border-solid">
                     <div class="relative inline-flex items-center space-x-2">
@@ -58,7 +58,7 @@
                                 <div class="w-full bg-white h-[312px]  flex flex-col rounded-xl">
                                     <div class="flex justify-between px-4 py-2 border border-gray-100 cursor-pointer rounded-t-xl">
                                         <div class="relative inline-flex items-center">
-                                            <h5 class="text-pink-500 text-[1em]">Messenger</h5>
+                                            <h5 class="text-pink-500 text-[1em] font-semibold">Messenger</h5>
                                         </div>
                                     </div>
                                     <div class="chat-list__scroll">
