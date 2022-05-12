@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full max-w-[250px] mx-auto text-[#838daa]">
+    <div class="w-full max-w-[250px] mx-auto text-gray-300">
         <ul class="grid grid-cols-2 text-center md:grid-cols-1 xl:grid-cols-2 xl:px-7">
             <li class="w-full">
                 <router-link class="flex flex-col items-center px-1 py-4 transition duration-500 hover:text-pink-500" :to="'#'">

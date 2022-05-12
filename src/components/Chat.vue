@@ -71,7 +71,7 @@
 
 <script setup>
 import close from '../assets/images/icons/close.svg'
-import { ref, nextTick, reactive } from "vue";
+import { ref, nextTick } from "vue";
 import data from "emoji-mart-vue-fast/data/all.json";
 import { Picker, EmojiIndex } from "emoji-mart-vue-fast/src";
 import "emoji-mart-vue-fast/css/emoji-mart.css";

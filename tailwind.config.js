@@ -14,6 +14,7 @@ module.exports = {
           50:'#bbbbdc',
           100:'#e7edf2',
           200:'#626c72',
+          300:'#838daa',
           400:'#f8f9fb'
         },
         pink: {
@@ -23,6 +24,9 @@ module.exports = {
           100: '#fff3cd',
           200: '#ffeeba',
           400:'#856404'
+        },
+        green: {
+          100: '#2ed573',
         }
       },
     },

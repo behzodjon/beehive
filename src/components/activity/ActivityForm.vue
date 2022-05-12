@@ -74,7 +74,7 @@
                             <input @click="textAreaFocus = false" type="reset"
                                 class="text-pink-500 cursor-pointer hover:underline" value="Cancel">
                             <input type="submit"
-                                class="px-8 py-2 text-white bg-pink-500 btn-gradient rounded-[30px] cursor-pointer"
+                                class="text-sm primary-btn"
                                 value="Post Update">
                         </div>
                     </div>
@@ -136,10 +136,7 @@ function formatBytes(bytes, decimals = 2) {
     box-shadow: 0 20px 90px rgb(58 46 68 / 5%);
 }
 
-.btn-gradient {
-    background-image: linear-gradient(90deg, #8224e3 0, #a968ec 50%, #8224e3 100%);
-    box-shadow: 0 1px 2px 0 rgb(130 36 227 / 50%);
-}
+
 
 .activity-form::before {
     content: "";
