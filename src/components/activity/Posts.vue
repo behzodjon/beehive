@@ -29,6 +29,7 @@
                         <div class="absolute left-0 top-1">
                             <img class="w-10 h-auto rounded-full" src="../../assets/images/john-doe.jpg" alt="">
                         </div>
+
                         <div class="relative w-full">
                             <div class="mb-3">
                                 <div>
@@ -66,24 +67,7 @@
                                             Delete</span>
                                     </router-link>
                                 </div>
-                                <div v-if="openComment" class="relative">
-                                    <form class="flex w-full py-4 space-x-4">
-                                        <div>
-                                            <img class="rounded-[50%] w-[30px] h-auto object-cover"
-                                                src="../../assets/images/john-doe.jpg" alt="avatar">
-                                        </div>
-                                        <div class="flex flex-col w-full">
-                                            <textarea
-                                                class="block w-full h-10 px-4 py-1 text-sm bg-white border border-gray-100 border-solid rounded-3xl"
-                                                cols="30" rows="50"></textarea>
-                                            <div class="mt-2 space-x-4 text-xs">
-                                                <button class="py-1 primary-btn">Post</button>
-                                                <button @click="openComment = false"
-                                                    class="text-pink-500 hover:underline">Cancel</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                <Comment @close-comment="closeComment" v-if="openComment" class="relative" />
                             </div>
 
                         </div>
@@ -169,24 +153,7 @@
                                             Delete</span>
                                     </router-link>
                                 </div>
-                                <div v-if="openComment" class="relative">
-                                    <form class="flex w-full py-4 space-x-4">
-                                        <div>
-                                            <img class="rounded-[50%] w-[30px] h-auto object-cover"
-                                                src="../../assets/images/john-doe.jpg" alt="avatar">
-                                        </div>
-                                        <div class="flex flex-col w-full">
-                                            <textarea
-                                                class="block w-full h-10 px-4 py-1 text-sm bg-white border border-gray-100 border-solid rounded-3xl"
-                                                cols="30" rows="50"></textarea>
-                                            <div class="mt-2 space-x-4 text-xs">
-                                                <button class="py-1 primary-btn">Post</button>
-                                                <button @click="openComment = false"
-                                                    class="text-pink-500 hover:underline">Cancel</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                <Comment @close-comment="closeComment" v-if="openComment" class="relative" />
                             </div>
 
                         </div>
@@ -219,12 +186,12 @@
                                         </figure>
                                     </li>
                                     <li class="flex gap-4">
-                                       <figure class="relative overflow-hidden post-shadow rounded-xl">
+                                        <figure class="relative overflow-hidden post-shadow rounded-xl">
                                             <img class="object-cover w-full h-full duration-500 ease-in-out rounded-xl hover:scale-110"
                                                 src="https://mythemestore.com/beehive-preview/wp-content/uploads/rtMedia/users/4/2021/10/maxresdefault-1-450x320.jpg"
                                                 alt="">
                                         </figure>
-                                      <figure class="relative overflow-hidden post-shadow rounded-xl">
+                                        <figure class="relative overflow-hidden post-shadow rounded-xl">
                                             <img class="object-cover w-full h-full duration-500 ease-in-out rounded-xl hover:scale-110"
                                                 src="https://mythemestore.com/beehive-preview/wp-content/uploads/rtMedia/users/4/2021/10/maxresdefault-1-450x320.jpg"
                                                 alt="">
@@ -261,26 +228,8 @@
                                             Delete</span>
                                     </router-link>
                                 </div>
-                                <div v-if="openComment" class="relative">
-                                    <form class="flex w-full py-4 space-x-4">
-                                        <div>
-                                            <img class="rounded-[50%] w-[30px] h-auto object-cover"
-                                                src="../../assets/images/john-doe.jpg" alt="avatar">
-                                        </div>
-                                        <div class="flex flex-col w-full">
-                                            <textarea
-                                                class="block w-full h-10 px-4 py-1 text-sm bg-white border border-gray-100 border-solid rounded-3xl"
-                                                cols="30" rows="50"></textarea>
-                                            <div class="mt-2 space-x-4 text-xs">
-                                                <button class="py-1 primary-btn">Post</button>
-                                                <button @click="openComment = false"
-                                                    class="text-pink-500 hover:underline">Cancel</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                <Comment @close-comment="closeComment" v-if="openComment" class="relative" />
                             </div>
-
                         </div>
                     </div>
                 </TabPanel>
@@ -296,6 +245,7 @@ import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import like from '@/assets/images/icons/like.svg'
 import globe from '@/assets/images/icons/globe.svg'
 import plus from '@/assets/images/icons/plus.svg'
+import Comment from "../posts/Comment.vue";
 
 const liked = ref(false)
 const openComment = ref(false)
@@ -303,6 +253,10 @@ const isFavorite = ref(false)
 
 function toggleLike() {
     liked.value = !liked.value
+}
+
+function closeComment() {
+    openComment.value = false
 }
 
 </script>
@@ -324,7 +278,8 @@ function toggleLike() {
     z-index: -1;
     opacity: .7;
 }
-.post-shadow{
+
+.post-shadow {
     box-shadow: 0 16px 25px -23px #000;
 }
 </style>
