@@ -1,6 +1,6 @@
 <template>
-    <div class="grid grid-cols-3">
-        <div class="min-h-screen col-span-2 px-10 pt-8 border-r border-gray-100 border-solid">
+    <div class="grid grid-cols-1 xl:grid-cols-3">
+        <div class="min-h-screen pt-8 border-gray-100 border-solid xl:border-r xl:px-10 xl:col-span-2">
             <ActivityForm />
             <Posts />
         </div>

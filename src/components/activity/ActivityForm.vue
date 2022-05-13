@@ -5,7 +5,7 @@
             <div>
                 <div class="flex space-x-4">
                     <router-link to="#">
-                        <img class="w-10 h-auto rounded-full"
+                        <img class="w-16 h-auto rounded-full xl:w-10"
                             src="https://mythemestore.com/beehive-preview/wp-content/uploads/avatars/3/1650303361-bpthumb.jpg"
                             alt="">
                     </router-link>
@@ -63,18 +63,18 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="flex justify-between mt-4">
+                    <div class="flex flex-col justify-between mt-4 xl:flex-row">
                         <select
-                            class="py-1 text-[90%] pl-6 pr-8  bg-transparent border border-gray-100 border-solid rounded-full outline-none focus:outline-none focus:border-pink-500"
+                            class="xl:py-1 text-[90%] pl-6 pr-8  bg-transparent border border-gray-100 border-solid rounded-full outline-none focus:outline-none focus:border-pink-500 py-2"
                             name="" id="">
                             <option value="profile">Post in: Profile</option>
                             <option value="post">Post in: Group</option>
                         </select>
-                        <div class="flex space-x-3">
+                        <div class="flex flex-col-reverse gap-3 mt-4 xl:flex-row xl:mt-0">
                             <input @click="textAreaFocus = false" type="reset"
                                 class="text-pink-500 cursor-pointer hover:underline" value="Cancel">
                             <input type="submit"
-                                class="text-sm primary-btn"
+                                class="py-1 text-xs xl:text-sm primary-btn"
                                 value="Post Update">
                         </div>
                     </div>

@@ -1,36 +1,37 @@
 <template>
-    <div class="relative flex mb-10 space-x-14">
-        <div class="absolute left-0 top-1">
+    <div class="relative mb-10 xl:flex xl:space-x-14">
+        <div class="relative left-0 xl:absolute xl:top-1 top-8">
             <img class="w-10 h-auto rounded-full" src="../../assets/images/john-doe.jpg" alt="">
         </div>
 
+        <!-- content -->
         <div class="relative w-full">
             <div class="mb-3">
-                <div v-if="post.type == 'group'" class="flex space-x-2">
-                    <div>
+                <div v-if="post.type == 'group'" class="flex items-center space-x-2">
+                    <div class="ml-12 leading-none xl:ml-3">
                         <router-link class="font-semibold text-dark-200" :to="'#'">Basenane
                         </router-link>
                         joined the group
                     </div>
-                    <router-link class="flex space-x-2" to="#">
+                    <router-link class="flex items-center space-x-2" to="#">
                         <figure>
                             <img class="inline-block w-5 rounded-full"
                                 src="https://mythemestore.com/beehive-preview/wp-content/uploads/group-avatars/7/5e2cd26be7154-bpthumb.jpg"
                                 alt="image">
                         </figure>
-                        <span class="block underline">Climate change</span>
+                        <span class="block w-full text-sm underline xl:text-xs">Climate change</span>
                     </router-link>
                 </div>
-                <div v-else>
+                <div v-else class="ml-12 xl:ml-0">
                     <router-link class="font-semibold text-dark-200" :to="'#'">Basenane</router-link>
                     posted an update
                 </div>
 
-                <div class="text-[90%] text-gray-50">
+                <div class="text-[90%] text-gray-50 mt-4 xl:mt-0">
                     3 hours, 2 minutes ago
                 </div>
 
-                <div v-if="post.type == 'group'" class="max-w-[75%]">
+                <div v-if="post.type == 'group'" class="xl:max-w-[75%] w-full">
                     <div class="overflow-hidden border border-gray-100 rounded-xl">
                         <div
                             class="bg-cover bg-[#c5c5c5] bg-center h-[120px] bg-[url('https://mythemestore.com/beehive-preview/wp-content/uploads/buddypress/groups/7/cover-image/5eb6fc3531946-bp-cover-image.jpg')]">
@@ -66,7 +67,7 @@
                         praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
                         excepturi sint occaecati cupiditate non provident, similique sunt in cul..</p>
                 </div>
-                <ul v-if="post.hasImg" class="flex flex-wrap max-w-[75%] w-full gap-y-4">
+                <ul v-if="post.hasImg" class="flex flex-wrap xl:max-w-[75%] w-full gap-y-4">
                     <li>
                         <figure class="relative overflow-hidden post-shadow rounded-xl">
                             <img class="object-cover w-full h-full duration-500 ease-in-out rounded-xl hover:scale-110"
@@ -92,43 +93,51 @@
                         </figure>
                     </li>
                 </ul>
-                <div class="relative flex items-center py-4 mt-4 space-x-4 border-gray-100 border-y">
+
+                <!-- post actions -->
+                <div class="relative flex items-center justify-between px-6 py-4 mt-4 space-x-4 border-gray-100 border-y xl:px-0">
                     <div @click="toggleLike" :class="[liked ? 'text-green-100' : 'text-pink-500']"
                         class="flex items-center space-x-1 transition-all duration-500 delay-150 cursor-pointer">
                         <like class="w-5 h-5 pb-[2px] " />
-                        <span v-if="liked" class="block">Liked</span>
-                        <span v-else class="block">Like</span>
+                        <span v-if="liked" class="hidden xl:block">Liked</span>
+                        <span v-else class="hidden xl:block">Like</span>
                         <span v-if="liked" class="block bg-[#2ed5731a] px-[6px] rounded-[50px] leading-none">1</span>
                     </div>
                     <div @click="openComment = !openComment"
                         class="relative flex items-center space-x-1 cursor-pointer">
-                        <span class="text-gray-300">Comment</span>
+                        <span class="hidden text-gray-300 xl:block">Comment</span>
+                        <comments class="w-5 h-5 pb-[2px] xl:hidden " />
                         <span
                             class="block px-[6px] border border-gray-100 rounded-full text-[85%] leading-none pb-[3px] pt-[6px]">0</span>
                     </div>
                     <div @click="isFavorite = !isFavorite" class="relative flex items-center space-x-1 cursor-pointer">
-                        <span v-if="isFavorite" class="text-gray-300">Remove Favorite</span>
-                        <span v-else class="text-gray-300">Mark as Favorite</span>
+                        <span v-if="isFavorite" class="hidden text-gray-300 xl:block">Remove Favorite</span>
+                        <span v-else class="hidden text-gray-300 xl:block">Mark as Favorite</span>
+                        <star class="w-5 h-5 pb-[2px] xl:hidden " />
                     </div>
-                    <router-link to="#" class="relative flex items-center space-x-1">
+                    <router-link to="#" class="relative items-center hidden space-x-1 xl:flex ">
                         <span class="text-gray-300">
                             Delete</span>
                     </router-link>
                 </div>
+
+                <!-- comments -->
                 <Comment @close-comment="closeComment" v-if="openComment" class="relative" />
             </div>
-
         </div>
     </div>
 
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import Comment from "@/components/posts/Comment.vue";
 import like from '@/assets/images/icons/like.svg'
 import globe from '@/assets/images/icons/globe.svg'
 import plus from '@/assets/images/icons/plus.svg'
+import comments from '@/assets/images/icons/comments.svg'
+import star from '@/assets/images/icons/star.svg'
+import starHalf from '@/assets/images/icons/star-half.svg'
 
 defineProps({
     post: Object,

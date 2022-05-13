@@ -1,31 +1,63 @@
 <template>
     <div>
         <TabGroup>
-            <TabList class="flex mb-6 space-x-3 border-b border-gray-100">
+            <TabList class="flex justify-between mb-6 space-x-3 border-b border-gray-100">
                 <Tab v-slot="{ selected }" as="template">
                     <button class="pb-3 font-semibold" :class="{ 'selected': selected }">
                         All Members
                     </button>
                 </Tab>
                 <Tab v-slot="{ selected }" as="template">
-                    <button class="pb-3 font-semibold" :class="{ 'selected': selected }">
+                    <button class="hidden pb-3 font-semibold xl:block" :class="{ 'selected': selected }">
                         My Groups
                     </button>
                 </Tab>
                 <Tab v-slot="{ selected }" as="template">
-                    <button class="pb-3 font-semibold" :class="{ 'selected': selected }">
+                    <button class="hidden pb-3 font-semibold xl:block" :class="{ 'selected': selected }">
                         My Favorites
                     </button>
                 </Tab>
                 <Tab v-slot="{ selected }" as="template">
-                    <button class="pb-3 font-semibold" :class="{ 'selected': selected }">
+                    <button class="hidden pb-3 font-semibold xl:block" :class="{ 'selected': selected }">
                         Mentions
                     </button>
                 </Tab>
+                <Tab v-slot="{ selected }" as="template">
+                    <Menu as="div" class="relative inline-block text-left">
+                        <div>
+                            <MenuButton class="inline-flex justify-center w-full px-4 py-2 ">
+                                <ellipsis class="w-4 h-7" />
+                            </MenuButton>
+                        </div>
+                        <MenuItems
+                            class="absolute right-0 z-30 w-40 py-1 origin-top-right bg-white border border-gray-100 border-solid rounded-xl focus:border-none">
+                            <div>
+                                <MenuItem>
+                                <div class="px-4 border-b border-gray-100">
+                                   My Groups
+                                </div>
+                                </MenuItem>
+                                 <MenuItem>
+                                <div class="px-4 border-b border-gray-100">
+                                   My Favorites
+                                </div>
+                                </MenuItem>
+                                  <MenuItem>
+                                <div class="px-4 border-b border-gray-100">
+                                 Mentions
+                                </div>
+                                </MenuItem>
+                            </div>
+                        </MenuItems>
+                    </Menu>
+                </Tab>
             </TabList>
-            <TabPanels class="relative tab-panel ">
+            <TabPanels class="relative tab-panel xl:before:block before:hidden">
                 <TabPanel>
-                   <PostItem v-for="post in posts" :key="post.id" :post="post"/>
+                    <PostItem v-for="post in posts" :key="post.id" :post="post" />
+                </TabPanel>
+                  <TabPanel>
+                    <div>Groups</div>
                 </TabPanel>
 
             </TabPanels>
@@ -34,18 +66,11 @@
 </template>
 
 <script setup>
-import { ref,reactive } from "vue";
+import { reactive } from "vue";
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
-import like from '@/assets/images/icons/like.svg'
-import globe from '@/assets/images/icons/globe.svg'
-import plus from '@/assets/images/icons/plus.svg'
-import Comment from "../posts/Comment.vue";
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+import ellipsis from '@/assets/images/icons/ellipsis.svg'
 import PostItem from "@/components/posts/PostItem.vue";
-
-const liked = ref(false)
-const openComment = ref(false)
-const isFavorite = ref(false)
-
 
 const posts = reactive([
     {
@@ -64,13 +89,7 @@ const posts = reactive([
     },
 ])
 
-function toggleLike() {
-    liked.value = !liked.value
-}
 
-function closeComment() {
-    openComment.value = false
-}
 
 </script>
 
@@ -81,7 +100,6 @@ function closeComment() {
 
 .tab-panel::before {
     content: "";
-    display: block;
     background: #e7edf2;
     width: 2px;
     height: 100%;
