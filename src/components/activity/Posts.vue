@@ -8,29 +8,29 @@
                     </button>
                 </Tab>
                 <Tab v-slot="{ selected }" as="template">
-                    <button class="hidden pb-3 font-semibold xl:block" :class="{ 'selected': selected }">
+                    <button class="hidden pb-3 font-semibold md:block" :class="{ 'selected': selected }">
                         My Groups
                     </button>
                 </Tab>
                 <Tab v-slot="{ selected }" as="template">
-                    <button class="hidden pb-3 font-semibold xl:block" :class="{ 'selected': selected }">
+                    <button class="hidden pb-3 font-semibold md:block" :class="{ 'selected': selected }">
                         My Favorites
                     </button>
                 </Tab>
                 <Tab v-slot="{ selected }" as="template">
-                    <button class="hidden pb-3 font-semibold xl:block" :class="{ 'selected': selected }">
+                    <button class="hidden pb-3 font-semibold md:block" :class="{ 'selected': selected }">
                         Mentions
                     </button>
                 </Tab>
                 <Tab v-slot="{ selected }" as="template">
                     <Menu as="div" class="relative inline-block text-left">
-                        <div>
+                        <div class="block md:hidden">
                             <MenuButton class="inline-flex justify-center w-full px-4 py-2 ">
                                 <ellipsis class="w-4 h-7" />
                             </MenuButton>
                         </div>
                         <MenuItems
-                            class="absolute right-0 z-30 w-40 py-1 origin-top-right bg-white border border-gray-100 border-solid rounded-xl focus:border-none">
+                            class="absolute right-0 z-30 w-40 py-1 origin-top-right bg-white border border-gray-100 border-solid rounded-md focus:border-none">
                             <div>
                                 <MenuItem>
                                 <div class="px-4 border-b border-gray-100">
@@ -52,7 +52,7 @@
                     </Menu>
                 </Tab>
             </TabList>
-            <TabPanels class="relative tab-panel xl:before:block before:hidden">
+            <TabPanels class="relative tab-panel md:before:block before:hidden">
                 <TabPanel>
                     <PostItem v-for="post in posts" :key="post.id" :post="post" />
                 </TabPanel>
