@@ -87,7 +87,6 @@ function addComment() {
 }
 
 function eventChild(data) {
-    console.log(data)
     form.lastParent = data.parent_id;
     var item = {
         id: uuidv4(),
@@ -96,8 +95,10 @@ function eventChild(data) {
         replies: []
     };
     var comment = recursiveFind(comments, data.parent_id);
+
     if (comment) {
         comment.replies.push(item);
+
     }
 }
 
