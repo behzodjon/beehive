@@ -8,7 +8,7 @@
         <div class="relative w-full">
             <div class="mb-3">
                 <div v-if="post.type == 'group'" class="flex items-center space-x-2">
-                    <div class="ml-12 leading-none md:ml-3">
+                    <div class="ml-12 leading-none md:ml-0">
                         <router-link class="font-semibold text-dark-200" :to="'#'">Basenane
                         </router-link>
                         joined the group
@@ -37,15 +37,15 @@
                             class="bg-cover bg-[#c5c5c5] bg-center h-[120px] bg-[url('https://mythemestore.com/beehive-preview/wp-content/uploads/buddypress/groups/7/cover-image/5eb6fc3531946-bp-cover-image.jpg')]">
                         </div>
                         <div class="flex px-6 pt-4 pb-6">
-                            <div class="block px-2 -mt-14">
+                            <div class="block px-2 -mt-10 ">
                                 <router-link to="#">
                                     <img class="w-[100px] h-auto border-2 border-white rounded-full border-solid"
                                         src="https://mythemestore.com/beehive-preview/wp-content/uploads/group-avatars/7/5e2cd26be5187-bpfull.jpg"
                                         alt="">
                                 </router-link>
                             </div>
-                            <div class="px-2">
-                                <h5 class="font-bold text-[#29292d] quicksand text-base">
+                            <div class="w-full px-2">
+                                <h5 class="font-bold text-[#29292d] quicksand md:text-base text-sm">
                                     <router-link to="#">Climate Change</router-link>
                                 </h5>
                                 <div class="flex items-center space-x-1">
@@ -53,7 +53,7 @@
                                     <span class="text-gray-50">Public</span>
                                 </div>
                             </div>
-                            <div class="ml-16">
+                            <div class="ml-4 xl:ml-16">
                                 <router-link to="#"
                                     class="relative block w-8 h-8 text-pink-500 transition-all duration-150 border border-pink-500 border-solid rounded-full hover:bg-pink-500 hover:text-white">
                                     <plus class="w-full h-[18px] absolute top-[6px] " />
@@ -106,7 +106,7 @@
                     <div @click="openComment = !openComment"
                         class="relative flex items-center space-x-1 cursor-pointer">
                         <span class="hidden text-gray-300 md:block">Comment</span>
-                        <comments class="w-5 h-5 pb-[2px] md:hidden " />
+                        <commentIcon class="w-5 h-5 pb-[2px] md:hidden " />
                         <span
                             class="block px-[6px] border border-gray-100 rounded-full text-[85%] leading-none pb-[3px] pt-[6px]">0</span>
                     </div>
@@ -122,7 +122,7 @@
                 </div>
 
                 <!-- comments -->
-                <Comment @close-comment="closeComment" v-if="openComment" class="relative" />
+                <Comments @close-comment="closeComment" v-if="openComment" class="relative" />
             </div>
         </div>
     </div>
@@ -131,11 +131,11 @@
 
 <script setup>
 import { ref } from "vue";
-import Comment from "@/components/posts/Comment.vue";
+import Comments from "@/components/posts/Comments.vue";
 import like from '@/assets/images/icons/like.svg'
 import globe from '@/assets/images/icons/globe.svg'
 import plus from '@/assets/images/icons/plus.svg'
-import comments from '@/assets/images/icons/comments.svg'
+import commentIcon from '@/assets/images/icons/comments.svg'
 import star from '@/assets/images/icons/star.svg'
 import starHalf from '@/assets/images/icons/star-half.svg'
 

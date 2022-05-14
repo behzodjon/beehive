@@ -1,28 +1,28 @@
 <template>
     <div>
         <TabGroup>
-            <TabList class="flex justify-between mb-6 space-x-3 border-b border-gray-100">
+            <TabList class="flex mb-6 space-x-1 text-xs border-b border-gray-100 xl:justify-between md:space-x-3 md:text-sm">
                 <Tab v-slot="{ selected }" as="template">
-                    <button class="pb-3 font-semibold" :class="{ 'selected': selected }">
+                    <button class="pb-2 font-semibold xl:pb-3" :class="{ 'selected': selected }">
                         All Members
                     </button>
                 </Tab>
                 <Tab v-slot="{ selected }" as="template">
-                    <button class="hidden pb-3 font-semibold md:block" :class="{ 'selected': selected }">
+                    <button class="pb-2 font-semibold xl:pb-3" :class="{ 'selected': selected }">
                         My Groups
                     </button>
                 </Tab>
                 <Tab v-slot="{ selected }" as="template">
-                    <button class="hidden pb-3 font-semibold md:block" :class="{ 'selected': selected }">
+                    <button class="pb-2 font-semibold xl:pb-3" :class="{ 'selected': selected }">
                         My Favorites
                     </button>
                 </Tab>
                 <Tab v-slot="{ selected }" as="template">
-                    <button class="hidden pb-3 font-semibold md:block" :class="{ 'selected': selected }">
+                    <button class="pb-2 font-semibold xl:pb-3" :class="{ 'selected': selected }">
                         Mentions
                     </button>
                 </Tab>
-                <Tab v-slot="{ selected }" as="template">
+                <!-- <Tab v-slot="{ selected }" as="template">
                     <Menu as="div" class="relative inline-block text-left">
                         <div class="block md:hidden">
                             <MenuButton class="inline-flex justify-center w-full px-4 py-2 ">
@@ -50,7 +50,7 @@
                             </div>
                         </MenuItems>
                     </Menu>
-                </Tab>
+                </Tab> -->
             </TabList>
             <TabPanels class="relative tab-panel md:before:block before:hidden">
                 <TabPanel>
