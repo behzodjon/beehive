@@ -18,7 +18,7 @@
             </div>
             <div class="flex flex-col w-full">
                 <textarea v-model="form.commentText"
-                    class="block w-full h-10 px-4 py-1 text-sm bg-white border border-gray-100 border-solid rounded-3xl"
+                    class="block w-full h-10 px-4 text-sm bg-white border border-gray-100 border-solid rounded-3xl"
                     cols="30" rows="50"></textarea>
                 <div class="mt-2 space-x-4 text-xs">
                     <button type="submit" class="py-1 primary-btn">Post</button>
@@ -33,10 +33,9 @@
 import { ref, reactive } from "vue";
 import eye from '@/assets/images/icons/eye.svg'
 import { v4 as uuidv4 } from "uuid";
-import CommentForm from "./CommentForm.vue";
 import CommentItem from "./CommentItem.vue";
 
-const emit = defineEmits(['eventChild'])
+defineEmits(['eventChild'])
 
 const comments = reactive([
     {
@@ -88,27 +87,26 @@ function addComment() {
 
 function eventChild(data) {
     form.lastParent = data.parent_id;
-    var item = {
+    let item = {
         id: uuidv4(),
         author: 'Alex',
         text: data.text,
         replies: []
     };
-    var comment = recursiveFind(comments, data.parent_id);
+    let comment = recursiveFind(comments, data.parent_id);
 
     if (comment) {
         comment.replies.push(item);
-
     }
 }
 
 function recursiveFind(replies, id) {
     if (replies) {
-        for (var i = 0; i < replies.length; i++) {
+        for (let i = 0; i < replies.length; i++) {
             if (replies[i].id === id) {
                 return replies[i];
             }
-            var found = recursiveFind(replies[i].replies, id);
+            let found = recursiveFind(replies[i].replies, id);
             if (found) return found;
         }
     }

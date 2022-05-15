@@ -5,7 +5,7 @@
         </div>
         <div class="flex flex-col w-full">
             <textarea v-model="form.commentText"
-                class="block w-full h-10 px-4 py-1 text-sm bg-white border border-gray-100 border-solid rounded-3xl"
+                class="block w-full h-10 px-4 text-sm bg-white border border-gray-100 border-solid rounded-3xl"
                 cols="30" rows="50"></textarea>
             <div class="mt-2 space-x-4 text-xs">
                 <button type="submit" class="py-1 primary-btn">Post</button>

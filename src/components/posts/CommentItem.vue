@@ -17,14 +17,16 @@
                     <span>{{ comment.text }}</span>
                 </div>
                 <div class="space-x-2">
-                    <button @click="clickReply()" class="text-dark-200 text-[90%] font-semibold">Reply</button>
-                    <button class="text-dark-200 text-[90%] font-semibold">Delete</button>
+                    <button @click="clickReply" class="text-dark-200 text-[90%] font-semibold">Reply</button>
+                    <button @click="deleteComment(comment)"
+                        class="text-dark-200 text-[90%] font-semibold">Delete</button>
                 </div>
             </div>
         </div>
-        <comment-nested v-for="reply in comment.replies" v-bind:key="comment.id" v-bind:comment="reply"
-            v-on:event_child="emit"></comment-nested>
-        <CommentItem />
+
+        <CommentItem class="pl-4 xl:pl-8" v-for="reply in comment.replies" :key="comment.id" :comment="reply"
+            @eventChild="recursiveEmit" />
+
         <CommentForm v-show="isReplying" @add-comment="addComment" />
     </li>
 </template>
@@ -46,6 +48,9 @@ function clickReply() {
     isReplying.value = !isReplying.value;
 }
 
+function recursiveEmit(data) {
+    emit('eventChild', data);
+}
 
 function addComment(text) {
     isReplying.value = false;
@@ -53,6 +58,10 @@ function addComment(text) {
         parent_id: props.comment.id,
         text: text
     });
+}
+
+function deleteComment(value) {
+    console.log(value)
 }
 </script>
 

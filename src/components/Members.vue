@@ -1,6 +1,6 @@
 <template>
-    <div class="px-8 pt-8 pb-20">
-        <div class="rounded-xl member-bg">
+    <div class="px-4 pt-8 pb-20">
+        <div class="p-8 rounded-xl member-bg">
             <h5
                 class="relative text-base font-bold quicksand after:absolute after:bg-pink-500 after:content-[''] after:bottom-0 after:left-0 after:h-[2px] after:w-10 pb-4">
                 Members</h5>
