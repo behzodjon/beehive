@@ -4,11 +4,11 @@
             <li>
                 <button class="flex items-center pt-4 space-x-2 text-pink-500">
                     <eye class="w-5 h-5" />
-                    <span class="block">Show all 34 comments</span>
+                    <span class="block">Show all {{comments.length}} comments</span>
                 </button>
             </li>
             <CommentItem v-for="comment in comments" :key="comment.id" :comment="comment" @eventChild="eventChild"
-                @eventDeleteChild="eventDeleteChild"  />
+                @eventDeleteChild="eventDeleteChild" />
         </ul>
 
         <!-- comment form -->
@@ -102,10 +102,15 @@ function eventChild(data) {
 }
 
 function eventDeleteChild(data) {
-    let comment = recursiveFind(comments, data.parent.id);
-    if (comment) {
-        comment.replies = comment.replies.filter((item) => item.id !== data.item.id);
+    if (data.parent) {
+        let comment = recursiveFind(comments, data.parent.id);
+        if (comment) {
+            comment.replies = comment.replies.filter((item) => item.id !== data.item.id);
+        }
+    } else {
+        comments.splice(comments.indexOf(data.item.id), 1)
     }
+
 }
 
 

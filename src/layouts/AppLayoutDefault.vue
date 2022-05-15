@@ -44,13 +44,11 @@
                                     placeholder="Search..." type="search" name="search" />
                             </div>
                         </form>
-
                         <div class="relative flex items-center pl-2 space-x-1">
                             <div class="flex items-center justify-center w-6 h-6 ">
                                 <img class="rounded-[50%] w-full h-full object-cover"
                                     src="../assets/images/john-doe.jpg" alt="avatar">
                             </div>
-
                         </div>
                     </div>
                     <AlertList />
@@ -70,56 +68,7 @@
                         </form>
                     </div>
                     <div class="flex items-center w-full ml-4 md:ml-6">
-                        <ul class="flex">
-                            <li class="relative">
-                                <div class="relative block px-2">
-                                    <div
-                                        class="bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
-                                        <BaseAlertDropdown title="Friends requests" text="No friend request.">
-                                            <UserPlus class="w-4 h-4 text-[#626c72] " />
-                                        </BaseAlertDropdown>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="relative">
-                                <div class="relative block px-2">
-                                    <div
-                                        class="bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
-                                        <BaseAlertDropdown title="Notifications" text="No notifications found">
-                                            <bell class="w-4 h-4 text-[#626c72] " />
-                                        </BaseAlertDropdown>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="relative">
-                                <div class="relative block px-2">
-                                    <div
-                                        class="bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
-                                        <BaseAlertDropdown title="Unread messages" text="No messages to read.">
-                                            <EnvelopeOpen class="w-4 h-4 text-[#626c72] " />
-                                        </BaseAlertDropdown>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="relative">
-                                <div class="relative block px-2">
-                                    <div
-                                        class="bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
-                                        <ShoppingBag class="w-4 h-4 text-[#626c72] " />
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="relative">
-                                <div class="relative flex items-center pl-2 space-x-1">
-                                    <div class="flex items-center justify-center w-8 h-8 ">
-                                        <img class="rounded-[50%] w-full h-full object-cover"
-                                            src="../assets/images/john-doe.jpg" alt="avatar">
-                                    </div>
-                                    <span class="block text-dark-200">@ user</span>
-
-                                </div>
-                            </li>
-                        </ul>
+                        <AlertList />
                     </div>
                 </div>
             </div>

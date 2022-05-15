@@ -1,11 +1,10 @@
 <template>
-    <li class="z-50 xl:w-[280px] absolute xl:relative ml-[1.375rem] top-9 xl:top-0 w-60 xl:left-0 left-3">
+    <li class="z-50 md:w-[280px] absolute md:relative ml-[1.375rem] top-9 md:top-0 w-60 md:left-0 left-3">
         <div
             class="w-full bg-white h-[312px] justify-between border border-solid border-gray-100 absolute bottom-0 flex flex-col px-1 pt-1 rounded-tl-[12px] rounded-tr-[12px]">
 
             <!-- group info -->
-            <div
-                class="relative flex items-center pb-1 space-x-2 border-b border-gray-100 border-solid cursor-pointer">
+            <div class="relative flex items-center pb-1 space-x-2 border-b border-gray-100 border-solid cursor-pointer">
                 <div class="relative ">
                     <img class="w-[30px] h-auto rounded-full"
                         src="https://mythemestore.com/beehive-preview/wp-content/uploads/group-avatars/6/5e2cce5312454-bpthumb.jpg"
@@ -50,19 +49,25 @@
             <!-- message text -->
             <div>
                 <form @submit.prevent="sendMessage">
-                    <div class="flex border-t border-solid border-t-gray-100">
+                    <div class="flex items-center border-t border-solid border-t-gray-100">
                         <div class="relative grow">
                             <input @focus.native="togglePicker()" ref="input" autofocus v-model="message" type="text"
-                                class="min-h-[26px] inline-block py-2 leading-[1.25] w-full outline-none text-[90%]"
+                                class="min-h-[26px] inline-block py-2 leading-[1.25] w-full outline-none text-[90%] border-none"
                                 placeholder="Write your message" required>
                         </div>
                         <div @click="showEmoji = !showEmoji" class="inline-flex items-center cursor-pointer">
                             <span class="text-xl">&#128515;</span>
                         </div>
+                        <div class="block p-1 ml-2 bg-pink-500 rounded-full md:hidden">
+                            <button class="block" type="submit">
+                                <messageIcon class="w-4 h-4 text-white rotate-[230deg]" />
+                            </button>
+                        </div>
                     </div>
                     <div class="absolute bottom-9" v-if="showEmoji">
                         <Picker :data="emojiIndexData" set="twitter" @select="showEmojiElement" />
                     </div>
+
                 </form>
             </div>
         </div>
@@ -76,6 +81,7 @@ import data from "emoji-mart-vue-fast/data/all.json";
 import { Picker, EmojiIndex } from "emoji-mart-vue-fast/src";
 import "emoji-mart-vue-fast/css/emoji-mart.css";
 import dayjs from 'dayjs'
+import messageIcon from '@/assets/images/icons/message.svg'
 
 let emojiIndex = new EmojiIndex(data);
 

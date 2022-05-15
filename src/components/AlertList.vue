@@ -1,8 +1,8 @@
 <template>
     <div>
         <ul class="flex justify-between px-4 py-1">
-            <li class="relative">
-                <div class="relative block px-2">
+            <li class="static md:relative">
+                <div class="static block px-2 md:relative">
                     <div class="lg:bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
                         <BaseAlertDropdown title="Friends requests" text="No friend request.">
                             <UserPlus class="w-[18px] h-[18px] lg:w-4 lg:h-4 text-[#626c72] " />
@@ -10,8 +10,8 @@
                     </div>
                 </div>
             </li>
-            <li class="relative">
-                <div class="relative block px-2">
+            <li class="static md:relative">
+                <div class="static block px-2 md:relative">
                     <div class="lg:bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
                         <BaseAlertDropdown title="Notifications" text="No notifications found">
                             <bell class="w-[18px] h-[18px] lg:w-4 lg:h-4 text-[#626c72] " />
@@ -19,8 +19,8 @@
                     </div>
                 </div>
             </li>
-            <li class="relative">
-                <div class="relative block px-2">
+            <li class="static md:relative">
+                <div class="static block px-2 md:relative">
                     <div class="lg:bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
                         <BaseAlertDropdown title="Unread messages" text="No messages to read.">
                             <EnvelopeOpen class="w-[18px] h-[18px] lg:w-4 lg:h-4 text-[#626c72] " />
@@ -28,8 +28,8 @@
                     </div>
                 </div>
             </li>
-            <li class="relative">
-                <div class="relative block px-2">
+            <li class="static md:relative">
+                <div class="static block px-2 md:relative">
                     <div class="lg:bg-gray-400 text-base rounded-[50%] w-8 h-8 flex justify-center items-center">
                         <ShoppingBag class="w-[18px] h-[18px] lg:w-4 lg:h-4 text-[#626c72] " />
                     </div>

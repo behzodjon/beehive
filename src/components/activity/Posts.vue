@@ -1,7 +1,7 @@
 <template>
     <div>
         <TabGroup>
-            <TabList class="flex mb-6 space-x-1 text-xs border-b border-gray-100 xl:justify-between md:space-x-3 md:text-sm">
+            <TabList class="flex mb-6 space-x-2 text-xs border-b border-gray-100 md:space-x-3 md:text-sm">
                 <Tab v-slot="{ selected }" as="template">
                     <button class="pb-2 font-semibold xl:pb-3" :class="{ 'selected': selected }">
                         All Members
@@ -22,35 +22,7 @@
                         Mentions
                     </button>
                 </Tab>
-                <!-- <Tab v-slot="{ selected }" as="template">
-                    <Menu as="div" class="relative inline-block text-left">
-                        <div class="block md:hidden">
-                            <MenuButton class="inline-flex justify-center w-full px-4 py-2 ">
-                                <ellipsis class="w-4 h-7" />
-                            </MenuButton>
-                        </div>
-                        <MenuItems
-                            class="absolute right-0 z-30 w-40 py-1 origin-top-right bg-white border border-gray-100 border-solid rounded-md focus:border-none">
-                            <div>
-                                <MenuItem>
-                                <div class="px-4 border-b border-gray-100">
-                                   My Groups
-                                </div>
-                                </MenuItem>
-                                 <MenuItem>
-                                <div class="px-4 border-b border-gray-100">
-                                   My Favorites
-                                </div>
-                                </MenuItem>
-                                  <MenuItem>
-                                <div class="px-4 border-b border-gray-100">
-                                 Mentions
-                                </div>
-                                </MenuItem>
-                            </div>
-                        </MenuItems>
-                    </Menu>
-                </Tab> -->
+              
             </TabList>
             <TabPanels class="relative tab-panel md:before:block before:hidden">
                 <TabPanel>
@@ -68,8 +40,6 @@
 <script setup>
 import { reactive } from "vue";
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
-import ellipsis from '@/assets/images/icons/ellipsis.svg'
 import PostItem from "@/components/posts/PostItem.vue";
 
 const posts = reactive([
