@@ -7,7 +7,8 @@
                     <span class="block">Show all 34 comments</span>
                 </button>
             </li>
-            <CommentItem v-for="comment in comments" :key="comment.id" :comment="comment" @eventChild="eventChild" />
+            <CommentItem v-for="comment in comments" :key="comment.id" :comment="comment" @eventChild="eventChild"
+                @eventDeleteChild="eventDeleteChild"  />
         </ul>
 
         <!-- comment form -->
@@ -35,7 +36,7 @@ import eye from '@/assets/images/icons/eye.svg'
 import { v4 as uuidv4 } from "uuid";
 import CommentItem from "./CommentItem.vue";
 
-defineEmits(['eventChild'])
+defineEmits(['eventChild', 'deleteComment', 'eventDeleteChild'])
 
 const comments = reactive([
     {
@@ -99,6 +100,14 @@ function eventChild(data) {
         comment.replies.push(item);
     }
 }
+
+function eventDeleteChild(data) {
+    let comment = recursiveFind(comments, data.parent.id);
+    if (comment) {
+        comment.replies = comment.replies.filter((item) => item.id !== data.item.id);
+    }
+}
+
 
 function recursiveFind(replies, id) {
     if (replies) {

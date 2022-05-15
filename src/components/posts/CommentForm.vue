@@ -9,7 +9,7 @@
                 cols="30" rows="50"></textarea>
             <div class="mt-2 space-x-4 text-xs">
                 <button type="submit" class="py-1 primary-btn">Post</button>
-                <!-- <button @click="$emit('closeComment')" class="text-pink-500 hover:underline">Cancel</button> -->
+                <button @click="$emit('closeComment')" class="text-pink-500 hover:underline">Cancel</button>
             </div>
         </div>
     </form>
@@ -25,7 +25,7 @@ const form = reactive({
 })
 
 function addComment() {
-    emit('addComment', form.commentText.trim());
+    emit('addComment', form.commentText);
     form.commentText = '';
 }
 

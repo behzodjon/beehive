@@ -142,6 +142,8 @@ import starHalf from '@/assets/images/icons/star-half.svg'
 defineProps({
     post: Object,
 })
+
+
 const liked = ref(false)
 const openComment = ref(false)
 const isFavorite = ref(false)

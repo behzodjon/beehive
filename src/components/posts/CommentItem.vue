@@ -25,22 +25,23 @@
         </div>
 
         <CommentItem class="pl-4 xl:pl-8" v-for="reply in comment.replies" :key="comment.id" :comment="reply"
-            @eventChild="recursiveEmit" />
+            :parent="comment" @eventChild="recursiveEmit" 
+            @eventDeleteChild="recursiveEmitDelete" />
 
-        <CommentForm v-show="isReplying" @add-comment="addComment" />
+        <CommentForm v-show="isReplying" @add-comment="addComment" @close-comment="closeComment" />
     </li>
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import CommentForm from "./CommentForm.vue";
 
 const props = defineProps({
     comment: Object,
+    parent: Object,
 })
 
-const emit = defineEmits(['addComment', 'eventChild'])
-
+const emit = defineEmits(['addComment', 'eventChild', 'deleteComment', 'eventDeleteChild'])
 
 const isReplying = ref(false)
 
@@ -51,6 +52,9 @@ function clickReply() {
 function recursiveEmit(data) {
     emit('eventChild', data);
 }
+function recursiveEmitDelete(data) {
+    emit('eventDeleteChild', data);
+}
 
 function addComment(text) {
     isReplying.value = false;
@@ -60,9 +64,17 @@ function addComment(text) {
     });
 }
 
-function deleteComment(value) {
-    console.log(value)
+function deleteComment(data) {
+    emit('eventDeleteChild', {
+        parent: props.parent,
+        item: data,
+    });
 }
+
+function closeComment() {
+    isReplying.value = false
+}
+
 </script>
 
 <style lang="scss" scoped>
